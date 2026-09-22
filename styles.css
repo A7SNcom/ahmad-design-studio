@@ -1278,7 +1278,7 @@ textarea{resize:vertical}
 }
 /* Reliable local XP artwork: replaces text-glyph icons and generated wallpaper */
 .xp-desktop{
-  background:#5b9bd4 url("assets/desktop-background.jpg") center center/cover no-repeat!important;
+  background:#5b9bd4 url("assets/desktop-background.jpg?v=3") center center/cover no-repeat!important;
 }
 .xp-desktop::before,.xp-desktop::after{display:none!important}
 
@@ -1306,11 +1306,11 @@ textarea{resize:vertical}
   font-size:0!important;
 }
 .desktop-icon-art::before,.desktop-icon-art::after{display:none!important}
-.icon-ie{background-image:url("assets/icons/ie.svg")!important}
-.icon-folder{background-image:url("assets/icons/folder.svg")!important}
-.icon-document{background-image:url("assets/icons/document.svg")!important}
-.icon-payment{background-image:url("assets/icons/payment.svg")!important}
-.icon-mail{background-image:url("assets/icons/mail.svg")!important}
+.icon-ie{background-image:url("assets/icons/ie.svg?v=3")!important}
+.icon-folder{background-image:url("assets/icons/folder.svg?v=3")!important}
+.icon-document{background-image:url("assets/icons/document.svg?v=3")!important}
+.icon-payment{background-image:url("assets/icons/payment.svg?v=3")!important}
+.icon-mail{background-image:url("assets/icons/mail.svg?v=3")!important}
 
 .tb-icon{
   width:27px!important;
@@ -1321,12 +1321,12 @@ textarea{resize:vertical}
   text-shadow:none!important;
   background-size:25px 25px!important;
 }
-.tb-icon.back{background-image:url("assets/icons/back.svg")!important}
-.tb-icon.forward{background-image:url("assets/icons/forward.svg")!important}
-.tb-icon.home{background-image:url("assets/icons/home.svg")!important}
-.tb-icon.search{background-image:url("assets/icons/search.svg")!important}
-.tb-icon.star{background-image:url("assets/icons/star.svg")!important}
-.tb-icon.folder{background-image:url("assets/icons/cart.svg")!important}
+.tb-icon.back{background-image:url("assets/icons/back.svg?v=3")!important}
+.tb-icon.forward{background-image:url("assets/icons/forward.svg?v=3")!important}
+.tb-icon.home{background-image:url("assets/icons/home.svg?v=3")!important}
+.tb-icon.search{background-image:url("assets/icons/search.svg?v=3")!important}
+.tb-icon.star{background-image:url("assets/icons/star.svg?v=3")!important}
+.tb-icon.folder{background-image:url("assets/icons/cart.svg?v=3")!important}
 
 .mini-icon{
   flex:0 0 18px!important;
@@ -1339,10 +1339,10 @@ textarea{resize:vertical}
   font-size:0!important;
 }
 .mini-icon::before,.mini-icon::after{display:none!important}
-.service-mini,.doc-mini{background-image:url("assets/icons/document.svg")!important}
-.folder-mini{background-image:url("assets/icons/folder.svg")!important}
-.mail-mini{background-image:url("assets/icons/mail.svg")!important}
-.payment-mini{background-image:url("assets/icons/payment.svg")!important}
+.service-mini,.doc-mini{background-image:url("assets/icons/document.svg?v=3")!important}
+.folder-mini{background-image:url("assets/icons/folder.svg?v=3")!important}
+.mail-mini{background-image:url("assets/icons/mail.svg?v=3")!important}
+.payment-mini{background-image:url("assets/icons/payment.svg?v=3")!important}
 
 .start-primary b{
   flex:0 0 34px!important;
@@ -1356,33 +1356,33 @@ textarea{resize:vertical}
   font-size:0!important;
 }
 .start-primary b::before,.start-primary b::after{display:none!important}
-.start-ie{background-image:url("assets/icons/ie.svg")!important}
-.start-folder{background-image:url("assets/icons/folder.svg")!important}
-.start-mail{background-image:url("assets/icons/mail.svg")!important}
-.start-payment{background-image:url("assets/icons/payment.svg")!important}
+.start-ie{background-image:url("assets/icons/ie.svg?v=3")!important}
+.start-folder{background-image:url("assets/icons/folder.svg?v=3")!important}
+.start-mail{background-image:url("assets/icons/mail.svg?v=3")!important}
+.start-payment{background-image:url("assets/icons/payment.svg?v=3")!important}
 
 .payment-shield{
-  background:#fff url("assets/icons/shield.svg") center/38px 38px no-repeat!important;
+  background:#fff url("assets/icons/shield.svg?v=3") center/38px 38px no-repeat!important;
   color:transparent!important;
   font-size:0!important;
 }
 .bank-method-icon{
-  background:#fff url("assets/icons/bank.svg") center/28px 28px no-repeat!important;
+  background:#fff url("assets/icons/bank.svg?v=3") center/28px 28px no-repeat!important;
   color:transparent!important;
   font-size:0!important;
 }
 .card-method-icon{
-  background:#f2f2f2 url("assets/icons/card.svg") center/28px 28px no-repeat!important;
+  background:#f2f2f2 url("assets/icons/card.svg?v=3") center/28px 28px no-repeat!important;
   color:transparent!important;
   font-size:0!important;
 }
 .contact-avatar{
-  background:#eaf2fb url("assets/icons/mail.svg") center/36px 36px no-repeat!important;
+  background:#eaf2fb url("assets/icons/mail.svg?v=3") center/36px 36px no-repeat!important;
   color:transparent!important;
   font-size:0!important;
 }
 .about-logo{
-  background:#eaf2fb url("assets/icons/ie.svg") center/48px 48px no-repeat!important;
+  background:#eaf2fb url("assets/icons/ie.svg?v=3") center/48px 48px no-repeat!important;
   color:transparent!important;
   font-size:0!important;
 }
@@ -1422,15 +1422,15 @@ textarea{resize:vertical}
   background-repeat:no-repeat!important;
   background-size:14px 14px!important;
 }
-.title-bar-controls button[data-action="minimize"]::after{background-image:url("assets/icons/minimize.svg")!important}
-.title-bar-controls button[data-action="maximize"]::after{background-image:url("assets/icons/maximize.svg")!important}
-.title-bar-controls button[data-action="close"]::after{background-image:url("assets/icons/close.svg")!important}
+.title-bar-controls button[data-action="minimize"]::after{background-image:url("assets/icons/minimize.svg?v=3")!important}
+.title-bar-controls button[data-action="maximize"]::after{background-image:url("assets/icons/maximize.svg?v=3")!important}
+.title-bar-controls button[data-action="close"]::after{background-image:url("assets/icons/close.svg?v=3")!important}
 
 .windows-mark{
   width:22px!important;
   height:22px!important;
   font-size:0!important;
-  background:url("assets/icons/windows.svg") center/20px 20px no-repeat!important;
+  background:url("assets/icons/windows.svg?v=3") center/20px 20px no-repeat!important;
   transform:none!important;
 }
 .tray-icon{
@@ -1438,12 +1438,12 @@ textarea{resize:vertical}
   width:17px;
   height:17px;
   font-size:0!important;
-  background:url("assets/icons/network.svg") center/16px 16px no-repeat!important;
+  background:url("assets/icons/network.svg?v=3") center/16px 16px no-repeat!important;
 }
 .start-user-icon{
   width:40px!important;
   height:40px!important;
   color:transparent!important;
   font-size:0!important;
-  background:#3f79c5 url("assets/icons/user.svg") center/36px 36px no-repeat!important;
+  background:#3f79c5 url("assets/icons/user.svg?v=3") center/36px 36px no-repeat!important;
 }
