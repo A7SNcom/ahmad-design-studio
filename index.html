@@ -48,13 +48,14 @@
 
       <div class="window-body store-shell">
         <div class="browser-menu" aria-label="شريط القوائم">
-          <button type="button" data-open="aboutWindow">ملف</button>
-          <button type="button" data-view="services">تحرير</button>
-          <button type="button" data-view="services">عرض</button>
-          <button type="button" data-view="services">المفضلة</button>
-          <button type="button" data-open="policiesWindow">أدوات</button>
-          <button type="button" data-open="aboutWindow">تعليمات</button>
+          <button type="button" data-browser-menu="file" aria-haspopup="menu" aria-expanded="false">ملف</button>
+          <button type="button" data-browser-menu="edit" aria-haspopup="menu" aria-expanded="false">تحرير</button>
+          <button type="button" data-browser-menu="view" aria-haspopup="menu" aria-expanded="false">عرض</button>
+          <button type="button" data-browser-menu="favorites" aria-haspopup="menu" aria-expanded="false">المفضلة</button>
+          <button type="button" data-browser-menu="tools" aria-haspopup="menu" aria-expanded="false">أدوات</button>
+          <button type="button" data-browser-menu="help" aria-haspopup="menu" aria-expanded="false">تعليمات</button>
         </div>
+        <div id="classicMenuPopup" class="classic-menu-popup" role="menu" hidden></div>
 
         <div class="browser-toolbar" aria-label="شريط أدوات المتصفح">
           <button type="button" data-view="services"><span class="tb-icon back">←</span><span>رجوع</span></button>
@@ -244,6 +245,7 @@
         <form id="orderForm" novalidate>
           <fieldset>
             <legend>بيانات العميل</legend>
+            <div class="order-reference-row"><span>رقم الطلب</span><strong id="orderReference">—</strong></div>
             <div class="field-row-stacked"><label for="customerName">الاسم *</label><input id="customerName" name="name" autocomplete="name" required></div>
             <div class="field-grid">
               <div class="field-row-stacked"><label for="customerPhone">رقم الجوال</label><input id="customerPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05XXXXXXXX"></div>
@@ -262,6 +264,7 @@
             <legend>قبل إرسال الطلب</legend>
             <p>إرسال الطلب لا يعني بدء التنفيذ أو خصم أي مبلغ. يتم تأكيد النطاق ومدة التسليم والسعر النهائي ووسيلة الدفع قبل البدء.</p>
             <div><button type="button" data-policy="terms">الشروط والأحكام</button> · <button type="button" data-policy="refund">سياسة الاسترداد</button> · <button type="button" data-policy="delivery">سياسة التسليم</button></div>
+            <label class="terms-accept"><input id="termsAcceptance" type="checkbox" required> <span>قرأت الشروط وسياسة الاسترداد والتسليم وأوافق عليها.</span></label>
           </fieldset>
 
           <div id="orderStatus" class="order-status" role="status" aria-live="polite"></div>
@@ -284,7 +287,7 @@
       <div class="window-body payment-body">
         <div class="payment-header">
           <span class="payment-shield" aria-hidden="true">✓</span>
-          <div><h2>إتمام الدفع</h2><p>اختر وسيلة الدفع ثم أرسل إثبات العملية للمراجعة.</p></div>
+          <div><h2>إتمام الدفع</h2><p>طلب رقم <strong id="paymentOrderReference">—</strong> — اختر وسيلة الدفع ثم أرسل إثبات العملية للمراجعة.</p></div>
         </div>
 
         <div class="checkout-steps" aria-label="خطوات الدفع">

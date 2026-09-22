@@ -2,18 +2,144 @@
   const whatsappNumber = "966509015300";
   const emailAddress = "INFO@A7SN.COM";
   const storageKey = "a7sn-design-cart-v3";
+  const orderRefKey = "a7sn-design-order-ref-v1";
   const windows = [...document.querySelectorAll(".app-window")];
   const cards = [...document.querySelectorAll(".service-card")];
   const taskButtons = document.getElementById("taskButtons");
   const startMenu = document.getElementById("startMenu");
   const startButton = document.getElementById("startButton");
-  const state = { cart: [], currentServiceId: null };
+  const state = { cart: [], currentServiceId: null, orderRef: "" };
   let topZ = 30;
   let interactInitialized = false;
+
+
+  const classicMenuPopup = document.getElementById("classicMenuPopup");
+  let activeClassicMenuButton = null;
+  const classicMenus = {
+    file: [
+      ["طلب جديد", "new-order"],
+      ["سلة الطلب", "cart"],
+      ["separator"],
+      ["طباعة الصفحة", "print"]
+    ],
+    edit: [
+      ["نسخ البريد الإلكتروني", "copy-email"],
+      ["نسخ رقم التواصل", "copy-phone"]
+    ],
+    view: [
+      ["الخدمات والأسعار", "services"],
+      ["تحديث الصفحة", "refresh"]
+    ],
+    favorites: [
+      ["السياسات والشروط", "policies"],
+      ["الدفع والتحويل البنكي", "payment"],
+      ["تواصل معنا", "contact"]
+    ],
+    tools: [
+      ["سياسة الاسترداد", "refund"],
+      ["الشكاوى والنزاعات", "complaints"],
+      ["إعدادات الطلب", "new-order"]
+    ],
+    help: [
+      ["حول الموقع", "about"],
+      ["معلومات الاتصال", "contact"]
+    ]
+  };
+
+  function closeClassicMenu() {
+    if (!classicMenuPopup) return;
+    classicMenuPopup.hidden = true;
+    document.querySelectorAll("[data-browser-menu]").forEach((button) => {
+      button.classList.remove("menu-open");
+      button.setAttribute("aria-expanded", "false");
+    });
+    activeClassicMenuButton = null;
+  }
+
+  function openClassicMenu(name, sourceButton) {
+    if (!classicMenuPopup || !sourceButton) return;
+    const isSameOpen = activeClassicMenuButton === sourceButton && !classicMenuPopup.hidden;
+    closeClassicMenu();
+    if (isSameOpen) return;
+
+    const items = classicMenus[name] || [];
+    const nodes = items.map((item) => {
+      if (item[0] === "separator") {
+        const separator = document.createElement("div");
+        separator.className = "classic-menu-separator";
+        separator.setAttribute("role", "separator");
+        return separator;
+      }
+      const button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("role", "menuitem");
+      button.dataset.menuAction = item[1];
+      button.textContent = item[0];
+      return button;
+    });
+    classicMenuPopup.replaceChildren(...nodes);
+    classicMenuPopup.hidden = false;
+    sourceButton.classList.add("menu-open");
+    sourceButton.setAttribute("aria-expanded", "true");
+    activeClassicMenuButton = sourceButton;
+
+    const rect = sourceButton.getBoundingClientRect();
+    const popupWidth = classicMenuPopup.offsetWidth;
+    const popupHeight = classicMenuPopup.offsetHeight;
+    const left = Math.max(2, Math.min(rect.left, window.innerWidth - popupWidth - 2));
+    const top = Math.max(2, Math.min(rect.bottom, window.innerHeight - popupHeight - 34));
+    classicMenuPopup.style.left = left + "px";
+    classicMenuPopup.style.top = top + "px";
+    classicMenuPopup.querySelector('[role="menuitem"]')?.focus();
+  }
+
+  function runClassicMenuAction(action) {
+    closeClassicMenu();
+    if (action === "new-order") openWindow("orderWindow");
+    else if (action === "cart") openWindow("cartWindow");
+    else if (action === "print") window.print();
+    else if (action === "copy-email") copyValue(emailAddress, "تم نسخ البريد الإلكتروني.");
+    else if (action === "copy-phone") copyValue("0509015300", "تم نسخ رقم التواصل.");
+    else if (action === "services") {
+      openWindow("storeWindow");
+      document.getElementById("servicesPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    else if (action === "refresh") window.location.reload();
+    else if (action === "policies") openWindow("policiesWindow");
+    else if (action === "payment") openWindow("paymentWindow");
+    else if (action === "contact") openWindow("contactWindow");
+    else if (action === "refund") showPolicy("refund");
+    else if (action === "complaints") showPolicy("complaints");
+    else if (action === "about") openWindow("aboutWindow");
+  }
 
   const serviceById = (id) => cards.find((card) => card.dataset.id === id);
   const moneyText = (value) => new Intl.NumberFormat("en-US").format(value);
   const isMobile = () => window.matchMedia("(max-width:700px)").matches;
+
+  function createOrderRef() {
+    const date = new Date().toISOString().slice(0, 10).replaceAll("-", "");
+    let suffix = "";
+    try {
+      const bytes = new Uint8Array(3);
+      crypto.getRandomValues(bytes);
+      suffix = [...bytes].map((n) => n.toString(16).padStart(2, "0")).join("").toUpperCase();
+    } catch (_) {
+      suffix = Math.random().toString(36).slice(2, 8).toUpperCase().padEnd(6, "0");
+    }
+    return "DS-" + date + "-" + suffix;
+  }
+
+  function ensureOrderRef() {
+    try {
+      state.orderRef = localStorage.getItem(orderRefKey) || createOrderRef();
+      localStorage.setItem(orderRefKey, state.orderRef);
+    } catch (_) {
+      state.orderRef = state.orderRef || createOrderRef();
+    }
+    document.getElementById("orderReference").textContent = state.orderRef;
+    document.getElementById("paymentOrderReference").textContent = state.orderRef;
+  }
 
   function saveCart() {
     try { localStorage.setItem(storageKey, JSON.stringify(state.cart)); } catch (_) {}
@@ -303,6 +429,7 @@
       : "- لم يتم اختيار خدمة";
     return [
       "طلب خدمة تصميم",
+      "رقم الطلب: " + state.orderRef,
       "",
       "الاسم: " + (name || "غير مذكور"),
       "الجوال: " + (phone || "غير مذكور"),
@@ -325,11 +452,12 @@
     const nameInput = document.getElementById("customerName");
     const phoneInput = document.getElementById("customerPhone");
     const emailInput = document.getElementById("customerEmail");
+    const termsInput = document.getElementById("termsAcceptance");
     const name = nameInput.value.trim();
     const phone = phoneInput.value.trim();
     const email = emailInput.value.trim();
 
-    [nameInput, phoneInput, emailInput].forEach((input) => input.removeAttribute("aria-invalid"));
+    [nameInput, phoneInput, emailInput, termsInput].forEach((input) => input?.removeAttribute("aria-invalid"));
 
     if (!state.cart.length) {
       status.textContent = "أضف خدمة واحدة على الأقل قبل إرسال الطلب.";
@@ -354,6 +482,12 @@
       status.textContent = "تحقق من صحة البريد الإلكتروني.";
       emailInput.setAttribute("aria-invalid", "true");
       emailInput.focus();
+      return false;
+    }
+    if (!termsInput?.checked) {
+      status.textContent = "اقرأ الشروط وسياسة الاسترداد والتسليم ووافق عليها قبل المتابعة.";
+      termsInput?.setAttribute("aria-invalid", "true");
+      termsInput?.focus();
       return false;
     }
 
@@ -396,6 +530,7 @@
     const services = state.cart.map((item) => "- " + item.name + ": " + moneyText(item.price) + " ر.س").join("\n");
     return [
       "إثبات تحويل بنكي — خدمات التصميم",
+      "رقم الطلب: " + state.orderRef,
       "",
       "اسم المحوّل: " + payerName,
       "مرجع الحوالة: " + (transferReference || "غير مذكور"),
@@ -521,6 +656,18 @@
   }
 
   document.addEventListener("click", (event) => {
+    const classicMenuButton = event.target.closest("[data-browser-menu]");
+    if (classicMenuButton) {
+      openClassicMenu(classicMenuButton.dataset.browserMenu, classicMenuButton);
+      return;
+    }
+
+    const classicMenuAction = event.target.closest("[data-menu-action]");
+    if (classicMenuAction) {
+      runClassicMenuAction(classicMenuAction.dataset.menuAction);
+      return;
+    }
+
     const copyBank = event.target.closest("[data-copy-bank]");
     if (copyBank) {
       copyValue(copyBank.dataset.copyBank, "تم نسخ البيانات.");
@@ -573,9 +720,32 @@
       return;
     }
 
+    if (!event.target.closest("#classicMenuPopup") && !event.target.closest("[data-browser-menu]")) {
+      closeClassicMenu();
+    }
     if (!event.target.closest("#startMenu") && !event.target.closest("#startButton")) {
       startMenu.hidden = true;
     }
+  });
+
+  classicMenuPopup?.addEventListener("keydown", (event) => {
+    const items = [...classicMenuPopup.querySelectorAll('[role="menuitem"]')];
+    const current = items.indexOf(document.activeElement);
+    if (!items.length) return;
+    let next = current < 0 ? 0 : current;
+    if (event.key === "ArrowDown") next = (next + 1) % items.length;
+    else if (event.key === "ArrowUp") next = (next - 1 + items.length) % items.length;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = items.length - 1;
+    else if (event.key === "Escape") {
+      event.preventDefault();
+      const source = activeClassicMenuButton;
+      closeClassicMenu();
+      source?.focus();
+      return;
+    } else return;
+    event.preventDefault();
+    items[next].focus();
   });
 
   document.querySelector(".policy-nav")?.addEventListener("keydown", (event) => {
@@ -755,7 +925,10 @@
     initInteract();
   }
 
-  window.addEventListener("resize", syncResponsiveWindows);
+  window.addEventListener("resize", () => {
+    closeClassicMenu();
+    syncResponsiveWindows();
+  });
 
   document.querySelectorAll(".window-handle").forEach((handle) => {
     handle.addEventListener("dblclick", () => toggleMaximize(handle.closest(".app-window")));
@@ -763,6 +936,12 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
+    if (classicMenuPopup && !classicMenuPopup.hidden) {
+      const source = activeClassicMenuButton;
+      closeClassicMenu();
+      source?.focus();
+      return;
+    }
     if (!startMenu.hidden) {
       startMenu.hidden = true;
       return;
@@ -771,13 +950,16 @@
     if (topWindow && topWindow.id !== "storeWindow") closeWindow(topWindow, true);
   });
 
-  document.querySelectorAll("#customerName, #customerPhone, #customerEmail").forEach((input) => {
-    input.addEventListener("input", () => {
+  document.querySelectorAll("#customerName, #customerPhone, #customerEmail, #termsAcceptance").forEach((input) => {
+    const clearOrderError = () => {
       input.removeAttribute("aria-invalid");
       document.getElementById("orderStatus").textContent = "";
-    });
+    };
+    input.addEventListener("input", clearOrderError);
+    input.addEventListener("change", clearOrderError);
   });
 
+  ensureOrderRef();
   loadCart();
   renderCart();
   windows.forEach(ensureWindowPosition);

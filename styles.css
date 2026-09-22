@@ -224,6 +224,47 @@ a:visited{color:#551a8b}
   background:#316ac5;
   outline:0;
 }
+.classic-menu-popup{
+  position:fixed;
+  z-index:2200;
+  min-width:185px;
+  padding:2px;
+  direction:rtl;
+  background:#ece9d8;
+  border:1px solid #7b796f;
+  box-shadow:inset 1px 1px #fff,inset -1px -1px #aca899,2px 2px 3px #0005;
+}
+.classic-menu-popup[hidden]{display:none!important}
+.classic-menu-popup button{
+  display:flex;
+  align-items:center;
+  width:100%;
+  min-height:25px;
+  padding:3px 22px 3px 8px;
+  color:#111;
+  text-align:right;
+  white-space:nowrap;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+.classic-menu-popup button:hover,
+.classic-menu-popup button:focus-visible{
+  color:#fff;
+  background:#316ac5;
+  outline:0;
+}
+.classic-menu-separator{
+  height:1px;
+  margin:3px 2px;
+  background:#aca899;
+  border-bottom:1px solid #fff;
+}
+.browser-menu button.menu-open{
+  color:#fff;
+  background:#316ac5;
+}
+
 .browser-toolbar{
   display:flex;
   align-items:center;
@@ -629,6 +670,33 @@ input[aria-invalid="true"],textarea[aria-invalid="true"]{
   box-shadow:inset 0 0 0 1px #f3aaaa;
 }
 textarea{resize:vertical}
+.order-reference-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin:4px 0 8px;
+  padding:5px 7px;
+  background:#fff;
+  border:1px inset #b5b5b5;
+}
+.order-reference-row strong{
+  direction:ltr;
+  unicode-bidi:isolate;
+  color:#003399;
+  font-family:"Courier New",monospace;
+}
+.terms-accept{
+  display:flex;
+  align-items:flex-start;
+  gap:6px;
+  margin-top:8px;
+  padding:6px;
+  background:#fff;
+  border:1px solid #b6b6b6;
+}
+.terms-accept input{width:auto;margin-top:2px}
+.terms-accept input[aria-invalid="true"]{outline:2px solid #c51b1b}
 .order-summary{display:grid;gap:3px}
 .order-summary-row{
   display:flex;
@@ -1131,10 +1199,50 @@ textarea{resize:vertical}
   .old-web-header{display:block}
   .old-web-header h1{font-size:19px}
   .cart-shortcut{margin-top:7px}
-  .service-list{overflow-x:auto}
-  .service-list-head,.service-card{
-    min-width:690px;
-    grid-template-columns:minmax(270px,1fr) 100px 85px 100px 65px;
+  .service-list{
+    overflow:visible;
+    border-top:1px solid #9e9e9e;
+  }
+  .service-list-head{display:none}
+  .service-card{
+    min-width:0;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:
+      "title title"
+      "duration revisions"
+      "price action";
+    gap:0;
+    padding:0;
+    background:#fff;
+    border-bottom:1px solid #a9a9a9;
+  }
+  .service-card:nth-of-type(even){background:#f8fbff}
+  .service-card .service-title{
+    grid-area:title;
+    min-height:58px;
+    padding:7px 6px;
+    border-bottom:1px dotted #b8b8b8;
+  }
+  .service-card>.service-meta{
+    padding:6px;
+    color:#444;
+    background:transparent;
+  }
+  .service-card>.service-meta:nth-of-type(1){grid-area:duration}
+  .service-card>.service-meta:nth-of-type(2){grid-area:revisions;text-align:left}
+  .service-card>.service-meta:nth-of-type(1)::before{content:"المدة: ";font-weight:700}
+  .service-card>.service-meta:nth-of-type(2)::before{content:"التعديلات: ";font-weight:700}
+  .service-card>.money{
+    grid-area:price;
+    align-self:center;
+    padding:7px 6px;
+    font-size:13px;
+  }
+  .service-card>.add-service{
+    grid-area:action;
+    align-self:center;
+    min-width:92px;
+    margin:4px 6px;
   }
   .merchant-links{grid-template-columns:1fr}
   .field-grid{grid-template-columns:1fr}
