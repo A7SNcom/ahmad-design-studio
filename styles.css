@@ -1447,3 +1447,264 @@ textarea{resize:vertical}
   font-size:0!important;
   background:#3f79c5 url("assets/icons/user.svg?v=3") center/36px 36px no-repeat!important;
 }
+
+/* === RTL Windows XP visual corrections === */
+.xp-taskbar{
+  direction:rtl;
+  gap:2px!important;
+  height:32px!important;
+  padding:1px 0 1px 0!important;
+  background:
+    linear-gradient(180deg,#3887e8 0%,#245edb 9%,#245edb 88%,#1941a5 100%)!important;
+  border-top:1px solid #5da5f4!important;
+  box-shadow:inset 0 1px 0 #7bb8f6!important;
+}
+
+.start-button{
+  align-self:center!important;
+  justify-content:flex-start!important;
+  min-width:88px!important;
+  height:30px!important;
+  padding:0 8px 0 10px!important;
+  gap:4px!important;
+  font:700 13px Tahoma,"Microsoft Sans Serif",Arial,sans-serif!important;
+  font-style:normal!important;
+  text-shadow:1px 1px 1px #1f5f20!important;
+  color:#fff!important;
+  background:
+    linear-gradient(180deg,#75d66f 0%,#3bb33f 12%,#24922f 63%,#1f7d28 100%)!important;
+  border:1px solid #16651c!important;
+  border-right:0!important;
+  border-radius:15px 0 0 15px!important;
+  box-shadow:
+    inset 0 1px 0 #a8efa4,
+    inset 0 -1px 0 #145d1b!important;
+}
+
+.start-button:hover,
+.start-button:focus-visible{
+  background:
+    linear-gradient(180deg,#83e27d 0%,#45c14a 12%,#2aa43a 63%,#238632 100%)!important;
+  outline:0!important;
+}
+
+.start-button:active{
+  background:
+    linear-gradient(180deg,#22852d 0%,#2f9d35 58%,#55bd54 100%)!important;
+}
+
+.windows-mark{
+  flex:0 0 20px!important;
+  width:20px!important;
+  height:20px!important;
+  margin:0!important;
+  background-size:19px 19px!important;
+}
+
+.task-buttons{
+  direction:rtl;
+  display:flex!important;
+  align-items:center!important;
+  gap:2px!important;
+  min-width:0!important;
+  flex:1!important;
+  height:30px!important;
+  padding:2px 0!important;
+}
+
+.xp-taskbar .task-button{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:5px!important;
+  min-width:118px!important;
+  max-width:185px!important;
+  height:26px!important;
+  padding:0 7px!important;
+  margin:0!important;
+  overflow:hidden!important;
+  color:#fff!important;
+  font:400 11px Tahoma,"Microsoft Sans Serif",Arial,sans-serif!important;
+  line-height:24px!important;
+  text-align:right!important;
+  text-overflow:ellipsis!important;
+  white-space:nowrap!important;
+  background:linear-gradient(180deg,#5ca4ef 0%,#367fd4 45%,#2b6fc6 100%)!important;
+  border:1px solid #174b9b!important;
+  border-radius:2px!important;
+  box-shadow:inset 0 1px 0 #83b8ef!important;
+}
+
+.xp-taskbar .task-button:hover{
+  background:linear-gradient(180deg,#70b5f7 0%,#438ddd 45%,#327bd0 100%)!important;
+}
+
+.xp-taskbar .task-button.active,
+.xp-taskbar button.task-button.active{
+  color:#fff!important;
+  background:linear-gradient(180deg,#2b67bb 0%,#1f55a7 48%,#19498f 100%)!important;
+  border-color:#123f83!important;
+  box-shadow:
+    inset 1px 1px 0 #173d78,
+    inset -1px -1px 0 #4f87d3!important;
+}
+
+.xp-taskbar .task-button::before{
+  content:"";
+  flex:0 0 16px;
+  width:16px;
+  height:16px;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:16px 16px;
+}
+.xp-taskbar .task-button[data-window-id="storeWindow"]::before,
+.xp-taskbar .task-button[data-window-id="aboutWindow"]::before{
+  background-image:url("assets/icons/ie.svg?v=3");
+}
+.xp-taskbar .task-button[data-window-id="cartWindow"]::before{
+  background-image:url("assets/icons/cart.svg?v=3");
+}
+.xp-taskbar .task-button[data-window-id="orderWindow"]::before,
+.xp-taskbar .task-button[data-window-id="contactWindow"]::before{
+  background-image:url("assets/icons/mail.svg?v=3");
+}
+.xp-taskbar .task-button[data-window-id="paymentWindow"]::before{
+  background-image:url("assets/icons/payment.svg?v=3");
+}
+.xp-taskbar .task-button[data-window-id="policiesWindow"]::before,
+.xp-taskbar .task-button[data-window-id="serviceWindow"]::before{
+  background-image:url("assets/icons/document.svg?v=3");
+}
+
+.tray{
+  direction:ltr!important;
+  flex:0 0 auto!important;
+  justify-content:center!important;
+  gap:5px!important;
+  height:30px!important;
+  min-width:72px!important;
+  padding:0 7px!important;
+  margin:0!important;
+  color:#fff!important;
+  background:linear-gradient(180deg,#27a5eb 0%,#168bd5 55%,#0b75bf 100%)!important;
+  border:0!important;
+  border-right:1px solid #0b5f9d!important;
+  border-radius:0!important;
+  box-shadow:
+    inset 1px 0 0 #58c2f7,
+    inset 0 1px 0 #58c2f7!important;
+}
+.tray time{
+  min-width:42px!important;
+  font:400 11px Tahoma,"Microsoft Sans Serif",Arial,sans-serif!important;
+}
+.tray-icon{
+  flex:0 0 16px!important;
+  width:16px!important;
+  height:16px!important;
+}
+
+/* Mirror IE navigation semantics for Arabic RTL. */
+.browser-toolbar{
+  direction:rtl!important;
+  gap:1px!important;
+  min-height:44px!important;
+  padding:2px 4px!important;
+  background:#ece9d8!important;
+}
+.browser-toolbar button{
+  grid-template-columns:25px auto!important;
+  min-width:68px!important;
+  height:36px!important;
+  padding:1px 4px!important;
+  gap:3px!important;
+  border-radius:0!important;
+}
+.browser-toolbar button:hover,
+.browser-toolbar button:focus-visible{
+  background:#f6f3e8!important;
+  border-color:#aca899!important;
+}
+.tb-icon{
+  width:25px!important;
+  height:25px!important;
+  min-width:25px!important;
+  background-size:24px 24px!important;
+}
+.tb-icon.back{
+  background-image:url("assets/icons/forward.svg?v=3")!important;
+}
+.tb-icon.forward{
+  background-image:url("assets/icons/back.svg?v=3")!important;
+}
+.toolbar-separator{
+  height:32px!important;
+  margin:0 2px!important;
+}
+.address-bar{
+  direction:rtl!important;
+  gap:4px!important;
+  min-height:27px!important;
+  padding:2px 4px!important;
+}
+.address-box{
+  direction:ltr!important;
+  height:22px!important;
+  padding:1px 4px!important;
+}
+.address-bar>button{
+  min-width:58px!important;
+  height:22px!important;
+  padding:0 5px!important;
+}
+.go-arrow{
+  display:inline-block!important;
+  transform:scaleX(-1)!important;
+}
+
+/* Keep taskbar geometry coherent on mobile without oversized controls. */
+@media(max-width:700px){
+  .xp-taskbar{
+    height:32px!important;
+  }
+  .start-button{
+    min-width:78px!important;
+    height:30px!important;
+    padding:0 6px 0 8px!important;
+    font-size:12px!important;
+  }
+  .windows-mark{
+    width:18px!important;
+    height:18px!important;
+    flex-basis:18px!important;
+    background-size:17px 17px!important;
+  }
+  .xp-taskbar .task-button{
+    min-width:78px!important;
+    max-width:120px!important;
+    height:26px!important;
+    padding:0 5px!important;
+    font-size:10px!important;
+  }
+  .tray{
+    min-width:58px!important;
+    padding:0 5px!important;
+  }
+  .browser-toolbar{
+    min-height:42px!important;
+    padding:2px!important;
+  }
+  .browser-toolbar button{
+    flex:0 0 58px!important;
+    min-width:58px!important;
+    height:36px!important;
+    padding:1px 2px!important;
+  }
+}
+
+/* Pixel-fit correction: avoid half-pixel vertical blur in the XP taskbar. */
+.xp-taskbar{padding:0 0 1px 0!important}
+.start-button{
+  justify-content:center!important;
+}
