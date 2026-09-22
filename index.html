@@ -637,7 +637,11 @@
         const targetLink = event.target.closest("[data-target-section]");
         if (targetLink) {
           closeWindow(targetLink.closest(".xp-library-window"));
-          document.getElementById(targetLink.dataset.targetSection)?.scrollIntoView({ behavior: "smooth", block: "start" });
+          const targetSection = document.getElementById(targetLink.dataset.targetSection);
+          if (targetSection) {
+            history.replaceState(null, "", `#${targetLink.dataset.targetSection}`);
+            targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         }
         const closeButton = event.target.closest("[data-close-window]");
         if (closeButton) closeWindow(closeButton.closest(".xp-library-window"));
