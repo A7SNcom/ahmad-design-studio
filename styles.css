@@ -90,6 +90,12 @@ button{cursor:pointer}
   transform:none!important;
 }
 .app-window .title-bar{touch-action:none;user-select:none}
+.app-window .title-bar-text{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
 .app-window .window-body{
   height:calc(100% - 33px);
   overflow:auto;
@@ -362,10 +368,12 @@ button{cursor:pointer}
   font-weight:800;
   unicode-bidi:isolate;
 }
-.riyal{
-  font-family:"Noto Sans Symbols 2","Segoe UI Symbol",sans-serif;
-  font-size:.95em;
+.currency{
+  font-family:Tahoma,"Microsoft Sans Serif",Arial,sans-serif;
+  font-size:.65em;
+  font-weight:700;
   line-height:1;
+  white-space:nowrap;
 }
 .compliance-strip{
   display:grid;
@@ -429,7 +437,27 @@ button{cursor:pointer}
 .field-row-stacked{display:grid;gap:4px;margin:8px 0}
 .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 input,textarea{width:100%}
+input[type="tel"]{
+  height:23px;
+  padding:3px 4px;
+  color:#222;
+  background:#fff;
+  border:1px solid #7f9db9;
+  border-radius:0;
+  appearance:none;
+}
+input[aria-invalid="true"],textarea[aria-invalid="true"]{
+  border-color:#c51b1b!important;
+  box-shadow:inset 0 0 0 1px #f3aaaa;
+}
 textarea{resize:vertical}
+#serviceDetails h2{
+  margin:2px 0 10px;
+  color:#16448d;
+  font-size:20px;
+  line-height:1.45;
+}
+#serviceDetails fieldset{margin:10px 0}
 .order-summary{display:grid;gap:5px}
 .order-summary-row{
   display:flex;
@@ -613,8 +641,8 @@ textarea{resize:vertical}
   padding:0 10px;
   color:#fff;
   direction:ltr;
-  background:#0b8bd8;
-  border:1px solid #0b69ad;
+  background:#005a9e;
+  border:1px solid #003f75;
   box-shadow:inset 1px 1px #3dc1ff;
 }
 .tray time{min-width:42px}
@@ -644,8 +672,32 @@ textarea{resize:vertical}
   }
   .store-content{grid-template-columns:1fr}
   .store-side{display:none}
-  .browser-menu{gap:5px;overflow-x:auto}
+  .browser-menu{
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    gap:2px;
+    overflow:visible;
+  }
+  .app-window .title-bar-controls button{
+    min-width:28px;
+    min-height:28px;
+  }
+  .browser-menu button{
+    min-width:0;
+    min-height:34px;
+    padding:0 4px;
+    font-size:11px;
+  }
   .browser-toolbar{flex-wrap:wrap}
+  .browser-toolbar>button,
+  .hero-buttons button,
+  .section-heading>button,
+  .service-footer button,
+  .dialog-actions button,
+  .policy-nav button{
+    min-height:36px;
+  }
+  .service-title{min-height:34px}
   .address-field{order:3;flex-basis:100%}
   .store-main{padding:10px}
   .store-hero{padding:12px}

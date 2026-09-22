@@ -9,6 +9,7 @@
   const startButton = document.getElementById("startButton");
   const state = { cart: [], currentServiceId: null };
   let topZ = 30;
+  let interactInitialized = false;
 
   const serviceById = (id) => cards.find((card) => card.dataset.id === id);
   const moneyText = (value) => new Intl.NumberFormat("en-US").format(value);
@@ -83,7 +84,7 @@
 
       const price = document.createElement("span");
       price.className = "money";
-      price.innerHTML = '<span class="riyal">⃁</span><span>' + moneyText(item.price) + "</span>";
+      price.innerHTML = '<span class="currency">ر.س</span><span>' + moneyText(item.price) + "</span>";
 
       const remove = document.createElement("button");
       remove.type = "button";
@@ -102,7 +103,7 @@
             const name = document.createElement("span");
             name.textContent = item.name;
             const price = document.createElement("strong");
-            price.textContent = "⃁ " + moneyText(item.price);
+            price.textContent = moneyText(item.price) + " ر.س";
             row.append(name, price);
             return row;
           })
@@ -150,6 +151,19 @@
     });
   }
 
+  function topVisibleWindow() {
+    return windows
+      .filter((win) => !win.hidden)
+      .sort((a, b) => Number(b.style.zIndex || 0) - Number(a.style.zIndex || 0))[0] || null;
+  }
+
+  function syncActiveTask() {
+    const topWindow = topVisibleWindow();
+    document.querySelectorAll(".task-button").forEach((button) => {
+      button.classList.toggle("active", button.dataset.windowId === topWindow?.id);
+    });
+  }
+
   function addTaskButton(win) {
     let button = taskButtons.querySelector('[data-window-id="' + win.id + '"]');
     if (button) return button;
@@ -163,9 +177,9 @@
       if (win.hidden) {
         win.hidden = false;
         activateWindow(win);
-      } else if (Number(win.style.zIndex || 0) === topZ) {
+      } else if (topVisibleWindow() === win) {
         win.hidden = true;
-        button.classList.remove("active");
+        syncActiveTask();
       } else {
         activateWindow(win);
       }
@@ -179,7 +193,13 @@
     if (!win) return;
     ensureWindowPosition(win);
     win.hidden = false;
-    if (isMobile()) win.classList.add("maximized");
+    if (isMobile() && !win.classList.contains("maximized")) {
+      win.classList.add("maximized");
+      win.dataset.mobileMaximized = "true";
+    } else if (!isMobile() && win.dataset.mobileMaximized === "true") {
+      win.classList.remove("maximized");
+      delete win.dataset.mobileMaximized;
+    }
     activateWindow(win);
     addTaskButton(win).classList.add("active");
 
@@ -196,6 +216,7 @@
     } else {
       taskButtons.querySelector('[data-window-id="' + win.id + '"]')?.classList.remove("active");
     }
+    syncActiveTask();
   }
 
   function toggleMaximize(win) {
@@ -203,10 +224,14 @@
     win.classList.toggle("maximized");
   }
 
-  function showPolicy(name) {
+  function showPolicy(name, focusTab = false) {
     openWindow("policiesWindow");
     document.querySelectorAll("[data-policy-tab]").forEach((button) => {
-      button.classList.toggle("active", button.dataset.policyTab === name);
+      const selected = button.dataset.policyTab === name;
+      button.classList.toggle("active", selected);
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+      if (selected && focusTab) button.focus();
     });
     document.querySelectorAll("[data-policy-pane]").forEach((pane) => {
       pane.classList.toggle("active", pane.dataset.policyPane === name);
@@ -225,7 +250,7 @@
       "<h2>" + card.dataset.name + "</h2>" +
       "<p>" + description + "</p>" +
       "<fieldset><legend>يشمل</legend><ul>" + features + "</ul></fieldset>" +
-      '<p><strong>السعر:</strong> <span class="money"><span class="riyal">⃁</span><span>' +
+      '<p><strong>السعر:</strong> <span class="money"><span class="currency">ر.س</span><span>' +
       moneyText(Number(card.dataset.price)) +
       "</span></span></p>";
     document.getElementById("addFromDetails").textContent = inCart(id) ? "إزالة من الطلب" : "إضافة للطلب";
@@ -238,7 +263,7 @@
     const email = document.getElementById("customerEmail").value.trim();
     const notes = document.getElementById("projectNotes").value.trim();
     const services = state.cart.length
-      ? state.cart.map((item) => "- " + item.name + ": ⃁ " + moneyText(item.price)).join("\n")
+      ? state.cart.map((item) => "- " + item.name + ": " + moneyText(item.price) + " ر.س").join("\n")
       : "- لم يتم اختيار خدمة";
     return [
       "طلب خدمة تصميم",
@@ -250,7 +275,7 @@
       "الخدمات:",
       services,
       "",
-      "الإجمالي التقديري: ⃁ " + moneyText(cartTotal()),
+      "الإجمالي التقديري: " + moneyText(cartTotal()) + " ر.س",
       "",
       "تفاصيل المشروع:",
       notes || "لا توجد تفاصيل إضافية.",
@@ -261,16 +286,41 @@
 
   function validateOrder() {
     const status = document.getElementById("orderStatus");
-    const name = document.getElementById("customerName").value.trim();
+    const nameInput = document.getElementById("customerName");
+    const phoneInput = document.getElementById("customerPhone");
+    const emailInput = document.getElementById("customerEmail");
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const email = emailInput.value.trim();
+
+    [nameInput, phoneInput, emailInput].forEach((input) => input.removeAttribute("aria-invalid"));
+
     if (!state.cart.length) {
       status.textContent = "أضف خدمة واحدة على الأقل قبل إرسال الطلب.";
+      openWindow("storeWindow");
+      document.getElementById("servicesPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
       return false;
     }
     if (!name) {
       status.textContent = "اكتب الاسم أولًا.";
-      document.getElementById("customerName").focus();
+      nameInput.setAttribute("aria-invalid", "true");
+      nameInput.focus();
       return false;
     }
+    if (!phone && !email) {
+      status.textContent = "أدخل رقم جوال أو بريدًا إلكترونيًا للتواصل.";
+      phoneInput.setAttribute("aria-invalid", "true");
+      emailInput.setAttribute("aria-invalid", "true");
+      phoneInput.focus();
+      return false;
+    }
+    if (email && !emailInput.validity.valid) {
+      status.textContent = "تحقق من صحة البريد الإلكتروني.";
+      emailInput.setAttribute("aria-invalid", "true");
+      emailInput.focus();
+      return false;
+    }
+
     status.textContent = "";
     return true;
   }
@@ -351,6 +401,22 @@
     }
   });
 
+  document.querySelector(".policy-nav")?.addEventListener("keydown", (event) => {
+    const tabs = [...document.querySelectorAll("[data-policy-tab]")];
+    const current = tabs.indexOf(document.activeElement);
+    if (current < 0) return;
+
+    let next = current;
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (current + 1) % tabs.length;
+    else if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = (current - 1 + tabs.length) % tabs.length;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = tabs.length - 1;
+    else return;
+
+    event.preventDefault();
+    showPolicy(tabs[next].dataset.policyTab, true);
+  });
+
   windows.forEach((win) => {
     win.addEventListener("mousedown", () => activateWindow(win));
     win.addEventListener("touchstart", () => activateWindow(win), { passive: true });
@@ -391,7 +457,8 @@
   }
 
   function initInteract() {
-    if (!window.interact || isMobile()) return;
+    if (!window.interact || isMobile() || interactInitialized) return;
+    interactInitialized = true;
     interact(".app-window")
       .draggable({
         allowFrom: ".window-handle",
@@ -440,10 +507,67 @@
       });
   }
 
-  window.addEventListener("resize", () => {
-    if (isMobile()) {
-      windows.filter((win) => !win.hidden).forEach((win) => win.classList.add("maximized"));
+  function clampWindow(win) {
+    if (!win || win.hidden || win.classList.contains("maximized")) return;
+    const rect = win.getBoundingClientRect();
+    const safeRight = window.innerWidth - 4;
+    const safeBottom = window.innerHeight - 42;
+    let dx = 0;
+    let dy = 0;
+
+    if (rect.left < 4) dx += 4 - rect.left;
+    if (rect.right > safeRight) dx -= rect.right - safeRight;
+    if (rect.top < 4) dy += 4 - rect.top;
+    if (rect.bottom > safeBottom) dy -= rect.bottom - safeBottom;
+
+    if (dx || dy) {
+      const x = (parseFloat(win.dataset.x) || 0) + dx;
+      const y = (parseFloat(win.dataset.y) || 0) + dy;
+      win.style.transform = "translate(" + x + "px," + y + "px)";
+      win.dataset.x = String(x);
+      win.dataset.y = String(y);
     }
+  }
+
+  function syncResponsiveWindows() {
+    windows.filter((win) => !win.hidden).forEach((win) => {
+      if (isMobile()) {
+        if (!win.classList.contains("maximized")) {
+          win.classList.add("maximized");
+          win.dataset.mobileMaximized = "true";
+        }
+      } else {
+        if (win.dataset.mobileMaximized === "true") {
+          win.classList.remove("maximized");
+          delete win.dataset.mobileMaximized;
+        }
+        clampWindow(win);
+      }
+    });
+    initInteract();
+  }
+
+  window.addEventListener("resize", syncResponsiveWindows);
+
+  document.querySelectorAll(".window-handle").forEach((handle) => {
+    handle.addEventListener("dblclick", () => toggleMaximize(handle.closest(".app-window")));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    if (!startMenu.hidden) {
+      startMenu.hidden = true;
+      return;
+    }
+    const topWindow = topVisibleWindow();
+    if (topWindow && topWindow.id !== "storeWindow") closeWindow(topWindow, true);
+  });
+
+  document.querySelectorAll("#customerName, #customerPhone, #customerEmail").forEach((input) => {
+    input.addEventListener("input", () => {
+      input.removeAttribute("aria-invalid");
+      document.getElementById("orderStatus").textContent = "";
+    });
   });
 
   loadCart();
