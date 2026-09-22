@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="أحمد خليفة — خدمات تصميم جرافيك وهوية بصرية رقمية مع أسعار وسياسات واضحة.">
+  <meta name="description" content="أحمد خليفة — خدمات تصميم جرافيك رقمية وهوية بصرية مع أسعار ونطاق عمل وسياسات واضحة.">
   <meta name="theme-color" content="#245edb">
-  <title>أحمد خليفة | متجر خدمات التصميم</title>
+  <title>أحمد خليفة | خدمات التصميم الجرافيكي</title>
   <link rel="stylesheet" href="vendor/xp.css">
   <link rel="stylesheet" href="styles.css">
   <script defer src="vendor/interact.min.js"></script>
@@ -15,206 +15,227 @@
   <div class="xp-desktop" id="desktop">
     <div class="desktop-icons" aria-label="اختصارات سطح المكتب">
       <button class="desktop-icon" type="button" data-open="storeWindow">
-        <span class="desktop-icon-art icon-store" aria-hidden="true">أ</span>
-        <span>متجر التصميم</span>
+        <span class="desktop-icon-art icon-ie" aria-hidden="true">e</span>
+        <span>خدمات التصميم</span>
       </button>
       <button class="desktop-icon" type="button" data-open="cartWindow">
-        <span class="desktop-icon-art icon-cart" aria-hidden="true">▣</span>
+        <span class="desktop-icon-art icon-folder" aria-hidden="true"></span>
         <span>سلة الطلب</span>
       </button>
       <button class="desktop-icon" type="button" data-open="policiesWindow">
-        <span class="desktop-icon-art icon-doc" aria-hidden="true">≡</span>
+        <span class="desktop-icon-art icon-document" aria-hidden="true"></span>
         <span>السياسات</span>
       </button>
+      <button class="desktop-icon" type="button" data-open="paymentWindow">
+        <span class="desktop-icon-art icon-payment" aria-hidden="true">ر.س</span>
+        <span>الدفع</span>
+      </button>
       <button class="desktop-icon" type="button" data-open="contactWindow">
-        <span class="desktop-icon-art icon-mail" aria-hidden="true">@</span>
-        <span>تواصل</span>
+        <span class="desktop-icon-art icon-mail" aria-hidden="true"></span>
+        <span>تواصل معنا</span>
       </button>
     </div>
 
-    <section class="window app-window store-window" id="storeWindow" data-title="متجر التصميم" data-width="1120" data-height="720">
+    <section class="window app-window store-window" id="storeWindow" data-title="خدمات التصميم" data-width="1120" data-height="720">
       <div class="title-bar window-handle">
-        <div class="title-bar-text">أحمد خليفة — متجر خدمات التصميم</div>
+        <div class="title-bar-text">خدمات التصميم - Microsoft Internet Explorer</div>
         <div class="title-bar-controls">
           <button aria-label="تصغير" data-action="minimize"></button>
           <button aria-label="تكبير" data-action="maximize"></button>
           <button aria-label="إغلاق" data-action="close"></button>
         </div>
       </div>
+
       <div class="window-body store-shell">
-        <div class="browser-menu">
+        <div class="browser-menu" aria-label="شريط القوائم">
           <button type="button" data-open="aboutWindow">ملف</button>
-          <button type="button" data-view="services">الخدمات</button>
-          <button type="button" data-open="cartWindow">السلة</button>
-          <button type="button" data-open="policiesWindow">السياسات</button>
-          <button type="button" data-open="contactWindow">تواصل</button>
+          <button type="button" data-view="services">تحرير</button>
+          <button type="button" data-view="services">عرض</button>
+          <button type="button" data-view="services">المفضلة</button>
+          <button type="button" data-open="policiesWindow">أدوات</button>
+          <button type="button" data-open="aboutWindow">تعليمات</button>
         </div>
 
-        <div class="browser-toolbar">
-          <button type="button" data-view="services">◀ الخدمات</button>
-          <button type="button" data-open="orderWindow">إرسال طلب</button>
-          <div class="address-field" aria-label="عنوان الصفحة">
-            <span>العنوان</span>
-            <strong>متجر أحمد خليفة / خدمات التصميم الرقمي</strong>
-          </div>
+        <div class="browser-toolbar" aria-label="شريط أدوات المتصفح">
+          <button type="button" data-view="services"><span class="tb-icon back">←</span><span>رجوع</span></button>
+          <button type="button" data-view="services"><span class="tb-icon forward">→</span><span>تقدم</span></button>
+          <span class="toolbar-separator" aria-hidden="true"></span>
+          <button type="button" data-view="services"><span class="tb-icon home">⌂</span><span>الرئيسية</span></button>
+          <button type="button" data-view="services"><span class="tb-icon search">⌕</span><span>بحث</span></button>
+          <button type="button" data-open="policiesWindow"><span class="tb-icon star">★</span><span>السياسات</span></button>
+          <button type="button" data-open="cartWindow"><span class="tb-icon folder">▣</span><span>السلة</span></button>
+        </div>
+
+        <div class="address-bar">
+          <span>العنوان</span>
+          <div class="address-box" dir="ltr"><span class="address-ie">e</span><span>https://a7sn.com/design-services/</span></div>
+          <button type="button" data-view="services"><span class="go-arrow">➜</span> انتقال</button>
         </div>
 
         <div class="store-content">
-          <aside class="store-side">
-            <div class="side-brand">
-              <span class="brand-tile">أ</span>
-              <div>
+          <aside class="explorer-pane">
+            <div class="xp-side-group">
+              <div class="xp-side-title">مهام خدمات التصميم <span>⌃</span></div>
+              <button type="button" data-view="services"><i class="mini-icon service-mini"></i>عرض الخدمات والأسعار</button>
+              <button type="button" data-open="cartWindow"><i class="mini-icon folder-mini"></i>فتح سلة الطلب</button>
+              <button type="button" data-open="orderWindow"><i class="mini-icon mail-mini"></i>إرسال طلب خدمة</button>
+              <button type="button" data-open="paymentWindow"><i class="mini-icon payment-mini"></i>الدفع والتحويل البنكي</button>
+            </div>
+
+            <div class="xp-side-group">
+              <div class="xp-side-title">أماكن أخرى <span>⌃</span></div>
+              <button type="button" data-open="policiesWindow"><i class="mini-icon doc-mini"></i>السياسات والشروط</button>
+              <button type="button" data-policy="refund"><i class="mini-icon doc-mini"></i>الاسترداد والإلغاء</button>
+              <button type="button" data-policy="delivery"><i class="mini-icon doc-mini"></i>التسليم الرقمي</button>
+              <button type="button" data-policy="complaints"><i class="mini-icon doc-mini"></i>الشكاوى والنزاعات</button>
+            </div>
+
+            <div class="xp-side-group">
+              <div class="xp-side-title">تفاصيل <span>⌃</span></div>
+              <div class="side-details">
                 <strong>أحمد خليفة</strong>
-                <span>تصميم جرافيك وهوية بصرية</span>
+                <span>مصمم جرافيك مستقل</span>
+                <span>خدمات رقمية</span>
+                <a href="tel:0509015300" dir="ltr">0509015300</a>
+                <a href="mailto:INFO@A7SN.COM" dir="ltr">INFO@A7SN.COM</a>
               </div>
-            </div>
-
-            <div class="side-section">
-              <strong>المهام</strong>
-              <button type="button" data-view="services">عرض كل الخدمات</button>
-              <button type="button" data-open="cartWindow">مراجعة سلة الطلب</button>
-              <button type="button" data-open="orderWindow">إرسال طلب جديد</button>
-            </div>
-
-            <div class="side-section">
-              <strong>معلومات</strong>
-              <button type="button" data-open="policiesWindow">الاسترداد والإلغاء</button>
-              <button type="button" data-policy="delivery">التسليم الرقمي</button>
-              <button type="button" data-open="contactWindow">بيانات التواصل</button>
-            </div>
-
-            <div class="side-contact">
-              <a href="tel:0509015300">0509015300</a>
-              <a href="mailto:INFO@A7SN.COM">INFO@A7SN.COM</a>
             </div>
           </aside>
 
           <main class="store-main">
-            <section class="store-hero">
+            <div class="old-web-header">
               <div>
-                <span class="xp-label">خدمات رقمية داخل المملكة العربية السعودية</span>
-                <h1>اختر الخدمة، أضفها للسلة، وأرسل طلبك من نفس الموقع.</h1>
-                <p>خدمات تصميم احترافية بأسعار ونطاق وتسليم وسياسة استرداد واضحة.</p>
-                <div class="hero-buttons">
-                  <button type="button" data-view="services">استعراض الخدمات</button>
-                  <button type="button" data-open="orderWindow">بدء الطلب</button>
-                </div>
+                <h1>خدمات التصميم الجرافيكي</h1>
+                <p>خدمات رقمية مخصصة — الأسعار ومدة التنفيذ والنطاق موضحة قبل إرسال الطلب.</p>
               </div>
-              <div class="hero-status">
-                <strong>حالة المتجر</strong>
-                <div><span class="green-dot"></span> متاح لاستقبال الطلبات</div>
-                <div>التسليم: رقمي</div>
-                <div>الشحن: غير مطبق</div>
-              </div>
-            </section>
+              <button type="button" data-open="cartWindow" class="cart-shortcut">سلة الطلب (<b id="cartCountInline">0</b>)</button>
+            </div>
 
-            <section id="servicesPanel" class="services-section">
-              <div class="section-heading">
-                <div>
-                  <span>كتالوج الخدمات</span>
-                  <h2>الخدمات والأسعار</h2>
-                </div>
-                <button type="button" data-open="cartWindow">السلة: <b id="cartCountInline">0</b></button>
+            <div class="notice-bar">
+              <strong>معلومة:</strong>
+              إرسال الطلب من الموقع لا يخصم أي مبلغ. يتم تأكيد النطاق والتوفر والمبلغ النهائي ووسيلة الدفع قبل بدء التنفيذ.
+            </div>
+
+            <section id="servicesPanel" class="services-section" aria-labelledby="servicesTitle">
+              <div class="classic-section-title">
+                <span id="servicesTitle">الخدمات والأسعار</span>
+                <small>انقر على اسم الخدمة لعرض التفاصيل.</small>
               </div>
 
-              <div class="service-grid" id="serviceGrid">
+              <div class="service-list" id="serviceGrid">
+                <div class="service-list-head" aria-hidden="true">
+                  <span>الخدمة</span><span>المدة</span><span>التعديلات</span><span>السعر</span><span>الطلب</span>
+                </div>
+
                 <article class="service-card" data-id="logo" data-name="تصميم شعار احترافي" data-price="18000">
-                  <div class="service-icon">01</div>
-                  <button class="service-title" type="button" data-details="logo">تصميم شعار احترافي</button>
-                  <p>شعار مخصص مع اتجاه بصري واضح وملفات استخدام نهائية.</p>
-                  <ul><li>10–15 يوم عمل</li><li>3 جولات تعديلات</li><li>PNG / PDF / SVG</li><li>دليل استخدام مختصر</li></ul>
-                  <div class="service-footer"><span class="money"><span class="currency">ر.س</span><span>18,000</span></span><button type="button" class="add-service">إضافة للطلب</button></div>
+                  <button class="service-title" type="button" data-details="logo"><i class="file-icon design-file"></i><span><strong>تصميم شعار احترافي</strong><small>شعار مخصص واتجاه بصري وملفات استخدام نهائية.</small></span></button>
+                  <span class="service-meta">10–15 يوم عمل</span>
+                  <span class="service-meta">3 جولات</span>
+                  <span class="money"><span>18,000</span><span class="currency">ر.س</span></span>
+                  <button type="button" class="add-service">إضافة</button>
+                  <ul class="service-hidden-details"><li>PNG / PDF / SVG</li><li>دليل استخدام مختصر</li><li>يشمل النطاق الموضح فقط</li></ul>
                 </article>
 
                 <article class="service-card" data-id="miniIdentity" data-name="هوية بصرية مصغرة" data-price="35000">
-                  <div class="service-icon">02</div>
-                  <button class="service-title" type="button" data-details="miniIdentity">هوية بصرية مصغرة</button>
-                  <p>نظام بصري أساسي مناسب لبدء العلامة وتوحيد ظهورها.</p>
-                  <ul><li>15–20 يوم عمل</li><li>3 جولات تعديلات</li><li>ألوان وخطوط مقترحة</li><li>تطبيقات أساسية</li></ul>
-                  <div class="service-footer"><span class="money"><span class="currency">ر.س</span><span>35,000</span></span><button type="button" class="add-service">إضافة للطلب</button></div>
+                  <button class="service-title" type="button" data-details="miniIdentity"><i class="file-icon design-file"></i><span><strong>هوية بصرية مصغرة</strong><small>نظام بصري أساسي لتوحيد ظهور العلامة.</small></span></button>
+                  <span class="service-meta">15–20 يوم عمل</span>
+                  <span class="service-meta">3 جولات</span>
+                  <span class="money"><span>35,000</span><span class="currency">ر.س</span></span>
+                  <button type="button" class="add-service">إضافة</button>
+                  <ul class="service-hidden-details"><li>ألوان وخطوط مقترحة</li><li>تطبيقات أساسية</li><li>ملفات استخدام رقمية</li></ul>
                 </article>
 
                 <article class="service-card" data-id="fullIdentity" data-name="هوية بصرية متكاملة" data-price="75000">
-                  <div class="service-icon">03</div>
-                  <button class="service-title" type="button" data-details="fullIdentity">هوية بصرية متكاملة</button>
-                  <p>منظومة هوية شاملة مع التطبيقات الرئيسية ودليل الاستخدام.</p>
-                  <ul><li>25–35 يوم عمل</li><li>4 جولات تعديلات</li><li>نظام ألوان وخطوط</li><li>دليل هوية متكامل</li></ul>
-                  <div class="service-footer"><span class="money"><span class="currency">ر.س</span><span>75,000</span></span><button type="button" class="add-service">إضافة للطلب</button></div>
+                  <button class="service-title" type="button" data-details="fullIdentity"><i class="file-icon design-file"></i><span><strong>هوية بصرية متكاملة</strong><small>منظومة هوية شاملة مع التطبيقات الرئيسية ودليل الاستخدام.</small></span></button>
+                  <span class="service-meta">25–35 يوم عمل</span>
+                  <span class="service-meta">4 جولات</span>
+                  <span class="money"><span>75,000</span><span class="currency">ر.س</span></span>
+                  <button type="button" class="add-service">إضافة</button>
+                  <ul class="service-hidden-details"><li>نظام ألوان وخطوط</li><li>دليل هوية متكامل</li><li>تطبيقات متفق عليها</li></ul>
                 </article>
 
                 <article class="service-card" data-id="social" data-name="10 منشورات سوشيال ميديا" data-price="22000">
-                  <div class="service-icon">04</div>
-                  <button class="service-title" type="button" data-details="social">10 منشورات سوشيال ميديا</button>
-                  <p>مجموعة تصميمات متناسقة وجاهزة للنشر الرقمي.</p>
-                  <ul><li>7–10 أيام عمل</li><li>جولتان تعديلات</li><li>10 تصاميم نهائية</li><li>مقاسات نشر متفق عليها</li></ul>
-                  <div class="service-footer"><span class="money"><span class="currency">ر.س</span><span>22,000</span></span><button type="button" class="add-service">إضافة للطلب</button></div>
+                  <button class="service-title" type="button" data-details="social"><i class="file-icon design-file"></i><span><strong>10 منشورات سوشيال ميديا</strong><small>تصاميم متناسقة وجاهزة للنشر الرقمي.</small></span></button>
+                  <span class="service-meta">7–10 أيام عمل</span>
+                  <span class="service-meta">جولتان</span>
+                  <span class="money"><span>22,000</span><span class="currency">ر.س</span></span>
+                  <button type="button" class="add-service">إضافة</button>
+                  <ul class="service-hidden-details"><li>10 تصاميم نهائية</li><li>مقاسات نشر متفق عليها</li><li>محتوى يقدمه العميل</li></ul>
                 </article>
 
                 <article class="service-card" data-id="brochure" data-name="بروشور أو ملف تعريفي" data-price="30000">
-                  <div class="service-icon">05</div>
-                  <button class="service-title" type="button" data-details="brochure">بروشور أو ملف تعريفي</button>
-                  <p>تصميم ملف تعريفي منظم للمحتوى الذي يقدمه العميل.</p>
-                  <ul><li>10–15 يوم عمل</li><li>جولتان تعديلات</li><li>حتى 12 صفحة</li><li>PDF جاهز للاستخدام</li></ul>
-                  <div class="service-footer"><span class="money"><span class="currency">ر.س</span><span>30,000</span></span><button type="button" class="add-service">إضافة للطلب</button></div>
+                  <button class="service-title" type="button" data-details="brochure"><i class="file-icon design-file"></i><span><strong>بروشور أو ملف تعريفي</strong><small>تنظيم وتصميم المحتوى المقدم من العميل.</small></span></button>
+                  <span class="service-meta">10–15 يوم عمل</span>
+                  <span class="service-meta">جولتان</span>
+                  <span class="money"><span>30,000</span><span class="currency">ر.س</span></span>
+                  <button type="button" class="add-service">إضافة</button>
+                  <ul class="service-hidden-details"><li>حتى 12 صفحة</li><li>PDF جاهز للاستخدام</li><li>المحتوى النهائي من العميل</li></ul>
                 </article>
 
                 <article class="service-card" data-id="presentation" data-name="عرض تقديمي احترافي" data-price="32000">
-                  <div class="service-icon">06</div>
-                  <button class="service-title" type="button" data-details="presentation">عرض تقديمي احترافي</button>
-                  <p>بناء بصري واضح حتى 15 شريحة وفق المحتوى المقدم.</p>
-                  <ul><li>10–14 يوم عمل</li><li>جولتان تعديلات</li><li>حتى 15 شريحة</li><li>ملف عرض + PDF</li></ul>
-                  <div class="service-footer"><span class="money"><span class="currency">ر.س</span><span>32,000</span></span><button type="button" class="add-service">إضافة للطلب</button></div>
+                  <button class="service-title" type="button" data-details="presentation"><i class="file-icon design-file"></i><span><strong>عرض تقديمي احترافي</strong><small>بناء بصري واضح للمحتوى المقدم حتى 15 شريحة.</small></span></button>
+                  <span class="service-meta">10–14 يوم عمل</span>
+                  <span class="service-meta">جولتان</span>
+                  <span class="money"><span>32,000</span><span class="currency">ر.س</span></span>
+                  <button type="button" class="add-service">إضافة</button>
+                  <ul class="service-hidden-details"><li>حتى 15 شريحة</li><li>ملف عرض + PDF</li><li>لا يشمل كتابة المحتوى إلا باتفاق منفصل</li></ul>
                 </article>
 
                 <article class="service-card" data-id="packaging" data-name="تصميم عبوة أو تغليف" data-price="28000">
-                  <div class="service-icon">07</div>
-                  <button class="service-title" type="button" data-details="packaging">تصميم عبوة أو تغليف</button>
-                  <p>تصميم بصري لعبوة واحدة وفق القالب والمقاسات المعتمدة.</p>
-                  <ul><li>12–18 يوم عمل</li><li>3 جولات تعديلات</li><li>قالب واحد</li><li>ملفات جاهزة للطباعة</li></ul>
-                  <div class="service-footer"><span class="money"><span class="currency">ر.س</span><span>28,000</span></span><button type="button" class="add-service">إضافة للطلب</button></div>
+                  <button class="service-title" type="button" data-details="packaging"><i class="file-icon design-file"></i><span><strong>تصميم عبوة أو تغليف</strong><small>تصميم بصري لعبوة واحدة وفق القالب والمقاسات المعتمدة.</small></span></button>
+                  <span class="service-meta">12–18 يوم عمل</span>
+                  <span class="service-meta">3 جولات</span>
+                  <span class="money"><span>28,000</span><span class="currency">ر.س</span></span>
+                  <button type="button" class="add-service">إضافة</button>
+                  <ul class="service-hidden-details"><li>قالب واحد</li><li>ملفات جاهزة للطباعة</li><li>مسؤولية المقاسات والقالب على العميل/المطبعة</li></ul>
                 </article>
 
                 <article class="service-card" data-id="consulting" data-name="استشارات وإشراف بصري لشهر" data-price="60000">
-                  <div class="service-icon">08</div>
-                  <button class="service-title" type="button" data-details="consulting">استشارات وإشراف بصري لشهر</button>
-                  <p>مراجعات وتوجيهات بصرية دورية للمشروع لمدة شهر.</p>
-                  <ul><li>مدة الخدمة: شهر</li><li>مراجعات دورية</li><li>توجيهات مكتوبة</li><li>متابعة الاتساق البصري</li></ul>
-                  <div class="service-footer"><span class="money"><span class="currency">ر.س</span><span>60,000</span></span><button type="button" class="add-service">إضافة للطلب</button></div>
+                  <button class="service-title" type="button" data-details="consulting"><i class="file-icon design-file"></i><span><strong>استشارات وإشراف بصري لشهر</strong><small>مراجعات وتوجيهات بصرية دورية لمدة شهر.</small></span></button>
+                  <span class="service-meta">30 يومًا</span>
+                  <span class="service-meta">دورية</span>
+                  <span class="money"><span>60,000</span><span class="currency">ر.س</span></span>
+                  <button type="button" class="add-service">إضافة</button>
+                  <ul class="service-hidden-details"><li>توجيهات مكتوبة</li><li>مراجعات دورية</li><li>لا يشمل تنفيذ تصميمات غير المتفق عليها</li></ul>
                 </article>
               </div>
             </section>
 
-            <div class="compliance-strip" aria-label="معلومات أساسية قبل الطلب">
-              <button type="button" data-policy="refund"><strong>سياسة الاسترداد</strong><span>100% قبل بدء العمل · 50% قبل المسودة الأولى</span></button>
-              <button type="button" data-policy="delivery"><strong>التسليم</strong><span>خدمات رقمية فقط · لا يوجد شحن مادي</span></button>
-              <button type="button" data-open="contactWindow"><strong>التواصل</strong><span dir="ltr">0509015300 · INFO@A7SN.COM</span></button>
-            </div>
+            <fieldset class="merchant-info">
+              <legend>معلومات مهمة قبل الطلب</legend>
+              <div class="merchant-links">
+                <button type="button" data-policy="refund"><strong>سياسة الاسترداد</strong><span>عرض شروط الاسترداد والمبالغ والمواعيد</span></button>
+                <button type="button" data-policy="delivery"><strong>التسليم</strong><span>المدة وطريقة التسليم الرقمي</span></button>
+                <button type="button" data-policy="terms"><strong>الشروط والأحكام</strong><span>النطاق والموافقات والالتزامات</span></button>
+                <button type="button" data-policy="complaints"><strong>الشكاوى والنزاعات</strong><span>آلية التواصل ومدة المعالجة</span></button>
+              </div>
+            </fieldset>
           </main>
         </div>
 
         <div class="status-bar">
-          <p class="status-bar-field">8 خدمات رقمية</p>
-          <p class="status-bar-field">الأسعار ثابتة للنطاق الموضح</p>
-          <p class="status-bar-field">لا يوجد شحن مادي</p>
+          <p class="status-bar-field">تم</p>
+          <p class="status-bar-field">8 خدمات تصميم جرافيك رقمية</p>
+          <p class="status-bar-field">المنطقة: المملكة العربية السعودية</p>
         </div>
       </div>
     </section>
 
-    <section class="window app-window" id="cartWindow" data-title="سلة الطلب" data-width="560" data-height="500" hidden>
+    <section class="window app-window" id="cartWindow" data-title="سلة الطلب" data-width="590" data-height="500" hidden>
       <div class="title-bar window-handle">
         <div class="title-bar-text">سلة الطلب</div>
         <div class="title-bar-controls"><button aria-label="تصغير" data-action="minimize"></button><button aria-label="تكبير" data-action="maximize"></button><button aria-label="إغلاق" data-action="close"></button></div>
       </div>
-      <div class="window-body">
-        <p class="dialog-intro">راجع الخدمات قبل الانتقال إلى نموذج الطلب.</p>
-        <div id="cartEmpty" class="empty-state">السلة فارغة. أضف خدمة من نافذة المتجر.</div>
+      <div class="window-body classic-dialog">
+        <div class="dialog-heading"><i class="big-folder-icon"></i><div><h2>سلة الطلب</h2><p>راجع الخدمات المحددة قبل الانتقال إلى نموذج الطلب.</p></div></div>
+        <div id="cartEmpty" class="empty-state">السلة فارغة. افتح نافذة خدمات التصميم واختر خدمة واحدة على الأقل.</div>
         <div id="cartItems" class="cart-items"></div>
-        <div class="cart-total"><strong>الإجمالي</strong><strong class="money"><span class="currency">ر.س</span><span id="cartTotal">0</span></strong></div>
+        <div class="cart-total"><strong>الإجمالي التقديري</strong><strong class="money"><span id="cartTotal">0</span><span class="currency">ر.س</span></strong></div>
         <div class="dialog-actions"><button type="button" data-open="storeWindow">إضافة خدمات</button><button type="button" id="clearCart">تفريغ السلة</button><button type="button" class="default" data-open="orderWindow">متابعة الطلب</button></div>
       </div>
     </section>
 
-    <section class="window app-window" id="orderWindow" data-title="إرسال الطلب" data-width="650" data-height="650" hidden>
+    <section class="window app-window" id="orderWindow" data-title="إرسال طلب خدمة" data-width="680" data-height="680" hidden>
       <div class="title-bar window-handle">
         <div class="title-bar-text">إرسال طلب خدمة</div>
         <div class="title-bar-controls"><button aria-label="تصغير" data-action="minimize"></button><button aria-label="تكبير" data-action="maximize"></button><button aria-label="إغلاق" data-action="close"></button></div>
@@ -223,144 +244,362 @@
         <form id="orderForm" novalidate>
           <fieldset>
             <legend>بيانات العميل</legend>
-            <div class="field-row-stacked"><label for="customerName">الاسم</label><input id="customerName" name="name" autocomplete="name" required></div>
+            <div class="field-row-stacked"><label for="customerName">الاسم *</label><input id="customerName" name="name" autocomplete="name" required></div>
             <div class="field-grid">
               <div class="field-row-stacked"><label for="customerPhone">رقم الجوال</label><input id="customerPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05XXXXXXXX"></div>
               <div class="field-row-stacked"><label for="customerEmail">البريد الإلكتروني</label><input id="customerEmail" name="email" type="email" autocomplete="email"></div>
             </div>
-            <div class="field-row-stacked"><label for="projectNotes">تفاصيل المشروع</label><textarea id="projectNotes" name="notes" rows="4" placeholder="اكتب المطلوب، طبيعة النشاط، الموعد المتوقع وأي تفاصيل مهمة."></textarea></div>
+            <div class="field-row-stacked"><label for="projectNotes">تفاصيل المشروع</label><textarea id="projectNotes" name="notes" rows="5" placeholder="اكتب المطلوب، طبيعة النشاط، الموعد المتوقع وأي تفاصيل مهمة."></textarea></div>
           </fieldset>
 
           <fieldset>
             <legend>الخدمات المختارة</legend>
             <div id="orderSummary" class="order-summary"></div>
-            <div class="order-total"><span>الإجمالي التقديري</span><strong class="money"><span class="currency">ر.س</span><span id="orderTotal">0</span></strong></div>
+            <div class="order-total"><span>الإجمالي التقديري</span><strong class="money"><span id="orderTotal">0</span><span class="currency">ر.س</span></strong></div>
           </fieldset>
 
-          <div class="order-notice">إرسال الطلب لا يعني بدء التنفيذ أو خصم أي مبلغ. يتم تأكيد النطاق والتوفر ووسيلة الدفع قبل البدء.</div>
+          <fieldset class="order-policy-confirm">
+            <legend>قبل إرسال الطلب</legend>
+            <p>إرسال الطلب لا يعني بدء التنفيذ أو خصم أي مبلغ. يتم تأكيد النطاق ومدة التسليم والسعر النهائي ووسيلة الدفع قبل البدء.</p>
+            <div><button type="button" data-policy="terms">الشروط والأحكام</button> · <button type="button" data-policy="refund">سياسة الاسترداد</button> · <button type="button" data-policy="delivery">سياسة التسليم</button></div>
+          </fieldset>
+
           <div id="orderStatus" class="order-status" role="status" aria-live="polite"></div>
           <div class="dialog-actions wrap-actions">
             <button type="button" id="copyOrder">نسخ الطلب</button>
             <button type="button" id="emailOrder">إرسال بالبريد</button>
-            <button type="submit" class="default">إرسال عبر واتساب</button>
+            <button type="submit">إرسال عبر واتساب</button>
+            <button type="button" class="default" id="continueToPayment">متابعة للدفع</button>
           </div>
         </form>
       </div>
     </section>
 
-    <section class="window app-window" id="policiesWindow" data-title="السياسات والشروط" data-width="760" data-height="620" hidden>
+
+    <section class="window app-window payment-window" id="paymentWindow" data-title="الدفع" data-width="760" data-height="690" hidden>
       <div class="title-bar window-handle">
-        <div class="title-bar-text">مركز السياسات والشروط</div>
+        <div class="title-bar-text">الدفع - خدمات التصميم</div>
         <div class="title-bar-controls"><button aria-label="تصغير" data-action="minimize"></button><button aria-label="تكبير" data-action="maximize"></button><button aria-label="إغلاق" data-action="close"></button></div>
       </div>
-      <div class="window-body policies-body">
-        <div class="policy-nav" role="tablist" aria-label="أقسام السياسات">
-          <button id="policyTabRefund" type="button" class="active" role="tab" aria-selected="true" aria-controls="policyRefund" tabindex="0" data-policy-tab="refund">الاسترداد</button>
-          <button id="policyTabDelivery" type="button" role="tab" aria-selected="false" aria-controls="policyDelivery" tabindex="-1" data-policy-tab="delivery">التسليم</button>
-          <button id="policyTabCancel" type="button" role="tab" aria-selected="false" aria-controls="policyCancel" tabindex="-1" data-policy-tab="cancel">الإلغاء</button>
-          <button id="policyTabTerms" type="button" role="tab" aria-selected="false" aria-controls="policyTerms" tabindex="-1" data-policy-tab="terms">الشروط</button>
-          <button id="policyTabPrivacy" type="button" role="tab" aria-selected="false" aria-controls="policyPrivacy" tabindex="-1" data-policy-tab="privacy">الخصوصية</button>
+      <div class="window-body payment-body">
+        <div class="payment-header">
+          <span class="payment-shield" aria-hidden="true">✓</span>
+          <div><h2>إتمام الدفع</h2><p>اختر وسيلة الدفع ثم أرسل إثبات العملية للمراجعة.</p></div>
         </div>
 
-        <article id="policyRefund" class="policy-pane active" role="tabpanel" aria-labelledby="policyTabRefund" data-policy-pane="refund">
-          <h2>سياسة الاسترجاع والاسترداد</h2>
-          <ul>
-            <li><strong>قبل بدء العمل:</strong> استرداد كامل بنسبة 100%.</li>
-            <li><strong>بعد بدء العمل وقبل إرسال المسودة الأولى:</strong> استرداد 50%.</li>
-            <li><strong>بعد إرسال المسودة الأولى:</strong> لا يوجد استرداد نقدي، مع استمرار حق العميل في جولات التعديل المشمولة.</li>
-            <li><strong>تعذر التنفيذ من مقدم الخدمة:</strong> استرداد كامل للمبلغ المدفوع عن الجزء غير المنفذ.</li>
-            <li>تعاد المبالغ المستحقة إلى وسيلة الدفع الأصلية خلال 7–14 يوم عمل بحسب مزود الدفع والبنك.</li>
-          </ul>
-        </article>
+        <div class="checkout-steps" aria-label="خطوات الدفع">
+          <span class="done">1. الطلب</span><span class="active">2. الدفع</span><span>3. التحقق</span>
+        </div>
 
-        <article id="policyDelivery" class="policy-pane" role="tabpanel" aria-labelledby="policyTabDelivery" data-policy-pane="delivery">
-          <h2>التسليم والشحن</h2>
-          <p>جميع الخدمات رقمية ومخصصة، لذلك لا يوجد شحن لمنتجات مادية.</p>
-          <ul><li>يبدأ احتساب مدة التنفيذ بعد تأكيد النطاق واستلام المتطلبات.</li><li>التسليم إلكتروني بصيغ الملفات الموضحة في الخدمة أو المتفق عليها كتابيًا.</li><li>تأخر العميل في إرسال المواد أو الرد على الملاحظات يمدد مدة التنفيذ بما يتناسب مع التأخير.</li></ul>
-        </article>
-
-        <article id="policyCancel" class="policy-pane" role="tabpanel" aria-labelledby="policyTabCancel" data-policy-pane="cancel">
-          <h2>سياسة الإلغاء</h2>
-          <p>يمكن طلب إلغاء الخدمة كتابيًا في أي وقت. تحدد قيمة الاسترداد بحسب المرحلة التي وصل إليها التنفيذ وفق سياسة الاسترداد.</p>
-        </article>
-
-        <article id="policyTerms" class="policy-pane" role="tabpanel" aria-labelledby="policyTabTerms" data-policy-pane="terms">
-          <h2>الشروط والأحكام</h2>
-          <ul><li>السعر يشمل المخرجات وجولات التعديل الموضحة في بطاقة الخدمة فقط.</li><li>أي تغيير جوهري في النطاق أو إضافة مخرجات جديدة يحتاج اتفاقًا وتسعيرًا جديدين.</li><li>العميل مسؤول عن امتلاك حقوق استخدام النصوص والصور والشعارات والمواد التي يقدمها.</li><li>تسلم الملفات النهائية بعد استكمال الالتزامات المالية المتفق عليها.</li><li>المسودات والاتجاهات غير المعتمدة ليست مخرجات نهائية.</li></ul>
-        </article>
-
-        <article id="policyPrivacy" class="policy-pane" role="tabpanel" aria-labelledby="policyTabPrivacy" data-policy-pane="privacy">
-          <h2>سياسة الخصوصية</h2>
-          <p>تستخدم بيانات العميل ومعلومات المشروع لغرض الرد على الطلب وتنفيذ الخدمة والتواصل المرتبط بها فقط. لا تباع بيانات العملاء لأطراف أخرى.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="window app-window" id="contactWindow" data-title="التواصل" data-width="500" data-height="420" hidden>
-      <div class="title-bar window-handle">
-        <div class="title-bar-text">بيانات التواصل</div>
-        <div class="title-bar-controls"><button aria-label="تصغير" data-action="minimize"></button><button aria-label="تكبير" data-action="maximize"></button><button aria-label="إغلاق" data-action="close"></button></div>
-      </div>
-      <div class="window-body">
-        <fieldset>
-          <legend>أحمد خليفة — مصمم جرافيك مستقل</legend>
-          <div class="contact-list">
-            <a href="tel:0509015300"><span>الجوال</span><strong dir="ltr">0509015300</strong></a>
-            <a href="mailto:INFO@A7SN.COM"><span>البريد</span><strong dir="ltr">INFO@A7SN.COM</strong></a>
-            <button type="button" data-open="orderWindow"><span>الطلبات</span><strong>فتح نموذج الطلب</strong></button>
-            <button type="button" data-open="policiesWindow"><span>السياسات</span><strong>الاسترداد والشروط</strong></button>
+        <fieldset class="payment-methods">
+          <legend>وسيلة الدفع</legend>
+          <label class="payment-method active-method">
+            <input type="radio" name="paymentMethod" value="bank" checked>
+            <span class="method-icon bank-method-icon">▣</span>
+            <span><strong>تحويل بنكي</strong><small>متاح الآن</small></span>
+          </label>
+          <div class="payment-method disabled-method" aria-disabled="true">
+            <span class="method-radio" aria-hidden="true"></span>
+            <span class="method-icon card-method-icon">▤</span>
+            <span><strong>بطاقة مدى / ائتمانية</strong><small>قريباً</small></span>
           </div>
         </fieldset>
-        <p>المملكة العربية السعودية · خدمات تصميم جرافيك رقمية عن بُعد.</p>
+
+        <fieldset class="bank-details">
+          <legend>بيانات التحويل البنكي</legend>
+          <div class="bank-logo-row"><span class="bank-logo">SNB</span><div><strong>البنك الأهلي السعودي</strong><small>The Saudi National Bank</small></div></div>
+          <dl class="bank-data">
+            <div><dt>اسم المستفيد</dt><dd><span dir="ltr">AHMAD KAMAL A KHALIFA</span></dd></div>
+            <div><dt>رقم الآيبان</dt><dd><span dir="ltr" id="bankIban">SA22 1000 0032 8000 0006 6706</span><button type="button" data-copy-bank="SA2210000032800000066706">نسخ</button></dd></div>
+            <div><dt>رقم الحساب</dt><dd><span dir="ltr">32800000066706</span><button type="button" data-copy-bank="32800000066706">نسخ</button></dd></div>
+            <div><dt>رمز السويفت</dt><dd><span dir="ltr">NCBKSAJE</span><button type="button" data-copy-bank="NCBKSAJE">نسخ</button></dd></div>
+          </dl>
+          <p class="bank-note">اكتب اسمك في وصف التحويل إن أمكن ليسهل مطابقة الحوالة مع الطلب.</p>
+        </fieldset>
+
+        <fieldset class="payment-order-summary">
+          <legend>ملخص المبلغ</legend>
+          <div id="paymentSummary" class="order-summary"></div>
+          <div class="order-total"><span>المبلغ المطلوب</span><strong class="money"><span id="paymentTotal">0</span><span class="currency">ر.س</span></strong></div>
+        </fieldset>
+
+        <form id="paymentProofForm" class="payment-proof-form" novalidate>
+          <fieldset>
+            <legend>إثبات التحويل</legend>
+            <div class="field-grid">
+              <div class="field-row-stacked"><label for="payerName">اسم المحوّل *</label><input id="payerName" name="payerName" autocomplete="name" required></div>
+              <div class="field-row-stacked"><label for="transferReference">مرجع الحوالة</label><input id="transferReference" name="transferReference" autocomplete="off" placeholder="اختياري"></div>
+            </div>
+            <div class="field-row-stacked">
+              <label for="transferReceipt">مرفق الحوالة *</label>
+              <input id="transferReceipt" name="transferReceipt" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" required>
+              <small>مطلوب للمتابعة. الصيغ المقبولة: صورة أو PDF، بحد أقصى 10 ميجابايت.</small>
+            </div>
+            <div id="receiptPreview" class="receipt-preview" hidden></div>
+            <label class="payment-confirm"><input id="paymentConfirm" type="checkbox" required> <span>أؤكد أن بيانات التحويل والمبلغ صحيحة وأن المرفق يخص هذه العملية.</span></label>
+          </fieldset>
+
+          <div class="payment-warning">
+            <strong>مهم:</strong> لا يُطلب منك إدخال أي رقم بطاقة أو رمز تحقق داخل هذا الموقع. التحويل البنكي هو وسيلة الدفع المتاحة حاليًا، ولا يعد الدفع مؤكدًا حتى تتم مراجعة إثبات الحوالة.
+          </div>
+          <div id="paymentStatus" class="order-status" role="status" aria-live="polite"></div>
+          <div class="dialog-actions wrap-actions">
+            <button type="button" data-open="orderWindow">رجوع للطلب</button>
+            <button type="button" id="copyPaymentDetails">نسخ بيانات التحويل</button>
+            <button type="submit" class="default">إرسال إثبات التحويل</button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <section class="window app-window" id="serviceWindow" data-title="تفاصيل الخدمة" data-width="560" data-height="520" hidden>
+    <section class="window app-window policies-window" id="policiesWindow" data-title="السياسات والشروط" data-width="930" data-height="700" hidden>
       <div class="title-bar window-handle">
-        <div class="title-bar-text" id="serviceWindowTitle">تفاصيل الخدمة</div>
+        <div class="title-bar-text">مركز السياسات والشروط - خدمات التصميم</div>
         <div class="title-bar-controls"><button aria-label="تصغير" data-action="minimize"></button><button aria-label="تكبير" data-action="maximize"></button><button aria-label="إغلاق" data-action="close"></button></div>
       </div>
-      <div class="window-body">
-        <div id="serviceDetails"></div>
-        <div class="dialog-actions"><button type="button" data-action="close">إغلاق</button><button type="button" class="default" id="addFromDetails">إضافة للطلب</button></div>
+      <div class="window-body policies-layout">
+        <aside class="policy-sidebar">
+          <div class="help-logo">?</div>
+          <h2>مركز السياسات</h2>
+          <p>اختر القسم المطلوب لقراءة التفاصيل الكاملة.</p>
+          <div class="policy-nav" role="tablist" aria-label="أقسام السياسات">
+            <button id="policyTabRefund" type="button" class="active" role="tab" aria-selected="true" aria-controls="policyRefund" tabindex="0" data-policy-tab="refund">سياسة الاسترداد والاسترجاع</button>
+            <button id="policyTabDelivery" type="button" role="tab" aria-selected="false" aria-controls="policyDelivery" tabindex="-1" data-policy-tab="delivery">التسليم وتنفيذ الخدمات</button>
+            <button id="policyTabCancel" type="button" role="tab" aria-selected="false" aria-controls="policyCancel" tabindex="-1" data-policy-tab="cancel">الإلغاء وتعليق المشروع</button>
+            <button id="policyTabTerms" type="button" role="tab" aria-selected="false" aria-controls="policyTerms" tabindex="-1" data-policy-tab="terms">الشروط والأحكام العامة</button>
+            <button id="policyTabPayment" type="button" role="tab" aria-selected="false" aria-controls="policyPayment" tabindex="-1" data-policy-tab="payment">الدفع والفواتير</button>
+            <button id="policyTabScope" type="button" role="tab" aria-selected="false" aria-controls="policyScope" tabindex="-1" data-policy-tab="scope">النطاق والتعديلات والموافقات</button>
+            <button id="policyTabRights" type="button" role="tab" aria-selected="false" aria-controls="policyRights" tabindex="-1" data-policy-tab="rights">حقوق الملكية والمواد</button>
+            <button id="policyTabComplaints" type="button" role="tab" aria-selected="false" aria-controls="policyComplaints" tabindex="-1" data-policy-tab="complaints">الشكاوى والنزاعات</button>
+            <button id="policyTabPrivacy" type="button" role="tab" aria-selected="false" aria-controls="policyPrivacy" tabindex="-1" data-policy-tab="privacy">سياسة الخصوصية</button>
+          </div>
+        </aside>
+
+        <div class="policy-content" tabindex="0" aria-label="نص السياسة">
+          <article id="policyRefund" class="policy-pane active" role="tabpanel" aria-labelledby="policyTabRefund" data-policy-pane="refund">
+            <h2>سياسة الاسترداد والاسترجاع</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <p>تنطبق هذه السياسة على خدمات التصميم الجرافيكي الرقمية والمخصصة التي يقدمها أحمد خليفة. ونظرًا لطبيعة العمل الإبداعي المخصص، ترتبط أهلية الاسترداد بمرحلة التنفيذ الفعلية والجزء المنجز من الخدمة.</p>
+            <h3>1. قبل بدء التنفيذ</h3>
+            <p>إذا دفع العميل قيمة الخدمة ثم طلب الإلغاء قبل بدء أي عمل فعلي أو بحث أو إعداد أو تصميم مخصص للمشروع، فيحق له طلب استرداد كامل بنسبة 100% من المبلغ المدفوع.</p>
+            <h3>2. بعد بدء التنفيذ وقبل إرسال المسودة الأولى</h3>
+            <p>إذا بدأ العمل فعليًا ولم تُرسل المسودة الأولى بعد، يحق للعميل استرداد 50% من المبلغ المدفوع. ويغطي الجزء غير المسترد الوقت والبحث والإعداد والعمل الذي تم حتى تاريخ طلب الإلغاء.</p>
+            <h3>3. بعد إرسال المسودة الأولى</h3>
+            <p>بعد إرسال أول مسودة أو اتجاه تصميمي مخصص للعميل، لا يكون المبلغ قابلًا للاسترداد لمجرد تغيير الرأي أو العدول عن المشروع. ويستمر حق العميل في الحصول على جولات التعديل المشمولة في وصف الخدمة.</p>
+            <h3>4. عدم التنفيذ أو الإخلال الجوهري</h3>
+            <p>إذا تعذر على مقدم الخدمة تنفيذ الخدمة المتفق عليها، أو لم يتم تسليم الجزء المتفق عليه بعد منح فرصة معقولة للمعالجة، فيعاد للعميل المبلغ المدفوع عن الجزء غير المنفذ. وإذا كانت الخدمة لم تُنفذ بالكامل بسبب مقدم الخدمة، يكون الاسترداد كاملًا.</p>
+            <h3>5. الخدمات المنجزة والمقبولة</h3>
+            <p>لا يطبق الاسترداد على الأعمال التي تم تسليمها وقبولها أو اعتمادها، أو الملفات النهائية التي تم تسليمها بعد اعتماد التصميم، ما لم يوجد خلل جوهري مثبت في التسليم لا يمكن معالجته ضمن نطاق الخدمة.</p>
+            <h3>6. طريقة طلب الاسترداد</h3>
+            <p>يرسل طلب الاسترداد عبر البريد الإلكتروني أو رقم التواصل الموضحين في الموقع، مع ذكر اسم العميل والخدمة وتاريخ الدفع وسبب الطلب. يتم الرد الأولي على الطلب خلال يومي عمل.</p>
+            <h3>7. مدة معالجة المبالغ</h3>
+            <p>بعد اعتماد الاسترداد، يعاد المبلغ إلى وسيلة الدفع الأصلية متى كان ذلك متاحًا. قد تستغرق المعالجة وظهور المبلغ في حساب العميل عادة من 7 إلى 14 يوم عمل بحسب مزود الدفع والبنك المُصدر.</p>
+            <h3>8. حدود الاسترداد</h3>
+            <p>لا يتجاوز مبلغ الاسترداد في جميع الأحوال قيمة العملية الأصلية. ولا يتم تقديم استرداد نقدي بديل لعملية إلكترونية إذا كانت آلية مزود الدفع تتطلب إعادة المبلغ إلى وسيلة الدفع الأصلية.</p>
+          </article>
+
+          <article id="policyDelivery" class="policy-pane" role="tabpanel" aria-labelledby="policyTabDelivery" data-policy-pane="delivery">
+            <h2>سياسة التسليم وتنفيذ الخدمات</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <p>جميع الخدمات المعروضة خدمات رقمية مخصصة ولا تتضمن شحن منتجات مادية. يتم التسليم إلكترونيًا إلى البريد الإلكتروني أو وسيلة التواصل المتفق عليها.</p>
+            <h3>1. بداية احتساب المدة</h3>
+            <p>تبدأ مدة التنفيذ بعد اكتمال ثلاثة أمور: تأكيد نطاق الخدمة، استلام المواد والمتطلبات اللازمة من العميل، وتأكيد الدفع أو ترتيبات الدفع المتفق عليها.</p>
+            <h3>2. المدد المعلنة</h3>
+            <p>المدة الخاصة بكل خدمة موضحة بجانبها في صفحة الخدمات، وهي تقدير بالأيام العملية. لا تدخل أيام العطل الرسمية أو فترات انتظار رد العميل أو المواد الناقصة ضمن مدة التنفيذ.</p>
+            <h3>3. التسليم الأولي والنهائي</h3>
+            <p>قد يسبق التسليم النهائي إرسال مسودات أو معاينات للمراجعة. التسليم النهائي يتم بعد إتمام التعديلات المشمولة واعتماد العميل واستكمال الالتزامات المالية المتفق عليها.</p>
+            <h3>4. صيغ الملفات</h3>
+            <p>تُسلّم الملفات بالصيغ المذكورة في وصف الخدمة أو في الاتفاق المكتوب. أي صيغة أو ملف مصدر أو تطبيق إضافي غير مذكور يعد خارج النطاق ما لم يتم الاتفاق عليه.</p>
+            <h3>5. تأخر العميل</h3>
+            <p>إذا تأخر العميل في إرسال المحتوى أو الرد أو الموافقات، تتوقف مدة التنفيذ خلال فترة الانتظار ويعاد جدولة التسليم بحسب الطاقة المتاحة عند استئناف المشروع.</p>
+            <h3>6. ظروف خارجة عن الإرادة</h3>
+            <p>قد تتأثر المدة بأحداث تقنية أو تشغيلية أو ظروف قاهرة خارجة عن السيطرة المعقولة. في هذه الحالة يتم إشعار العميل وتقديم موعد محدث أو حل مناسب.</p>
+          </article>
+
+          <article id="policyCancel" class="policy-pane" role="tabpanel" aria-labelledby="policyTabCancel" data-policy-pane="cancel">
+            <h2>سياسة الإلغاء وتعليق المشروع</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <h3>1. الإلغاء من العميل</h3>
+            <p>يمكن للعميل طلب إلغاء المشروع كتابيًا في أي وقت. تحدد قيمة الاسترداد — إن وجدت — وفق مرحلة التنفيذ وسياسة الاسترداد المنشورة.</p>
+            <h3>2. تعليق المشروع بطلب العميل</h3>
+            <p>يمكن تعليق المشروع لفترة قصيرة باتفاق مكتوب. إذا تجاوز التعليق 30 يومًا، يحق لمقدم الخدمة إعادة جدولة المشروع بحسب التوفر وقد يتطلب استئناف المشروع تحديثًا في الجدول الزمني إذا تغير النطاق أو المتطلبات.</p>
+            <h3>3. عدم الاستجابة</h3>
+            <p>إذا لم يرد العميل على طلبات المراجعة أو المعلومات لمدة 30 يومًا متتالية، يجوز اعتبار المشروع معلقًا. وبعد 60 يومًا دون استجابة يجوز إغلاق المشروع إداريًا مع حفظ ما تم إنجازه، وتطبق سياسة الاسترداد بحسب مرحلة التنفيذ.</p>
+            <h3>4. الإلغاء من مقدم الخدمة</h3>
+            <p>يجوز لمقدم الخدمة إلغاء المشروع عند تعذر التنفيذ، أو وجود طلب مخالف للأنظمة، أو عدم توفير متطلبات أساسية، أو وجود إساءة أو استخدام غير مشروع. يعاد للعميل في هذه الحالة المبلغ المستحق عن الجزء غير المنفذ وفق السياسة.</p>
+          </article>
+
+          <article id="policyTerms" class="policy-pane" role="tabpanel" aria-labelledby="policyTabTerms" data-policy-pane="terms">
+            <h2>الشروط والأحكام العامة للخدمات</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <p>باستخدام الموقع أو إرسال طلب خدمة أو الموافقة على عرض العمل، يقر العميل بأنه قرأ هذه الشروط وفهم طبيعة الخدمة الرقمية المخصصة.</p>
+            <h3>1. طبيعة النشاط</h3>
+            <p>النشاط المعروض هو تقديم خدمات تصميم جرافيك وهوية بصرية ومخرجات تصميم رقمية مرتبطة بها. لا يمثل الموقع متجرًا لبيع بضائع مادية ولا يقدم أنشطة غير مرتبطة بخدمات التصميم المعروضة.</p>
+            <h3>2. تكوين الاتفاق</h3>
+            <p>إضافة خدمة إلى السلة أو إرسال نموذج الطلب يعد طلبًا للمراجعة ولا يشكل وحده عقد تنفيذ أو خصمًا ماليًا. يبدأ الالتزام بعد تأكيد النطاق والسعر والمدة ووسيلة الدفع كتابيًا.</p>
+            <h3>3. الأسعار</h3>
+            <p>الأسعار المعروضة تخص النطاق القياسي الموضح لكل خدمة. أي توسع جوهري في النطاق أو عدد المخرجات أو المقاسات أو اللغات أو التطبيقات يقتضي موافقة وتسعيرًا مستقلين قبل تنفيذه.</p>
+            <h3>4. مسؤولية المعلومات</h3>
+            <p>يلتزم العميل بتقديم معلومات صحيحة وكاملة عن المشروع وبمراجعة النصوص والأسماء والأرقام والبيانات قبل الاعتماد النهائي. لا يتحمل مقدم الخدمة مسؤولية أخطاء المواد التي يقدمها العميل إذا نُفذت كما وردت منه.</p>
+            <h3>5. الاستخدام المشروع</h3>
+            <p>لا تقبل الطلبات المخالفة للأنظمة أو التي تنتهك حقوق الغير أو تتضمن مواد لا يملك العميل حق استخدامها. ويحق لمقدم الخدمة طلب ما يثبت حق الاستخدام عند الحاجة.</p>
+            <h3>6. حدود المسؤولية</h3>
+            <p>تبذل عناية مهنية معقولة في تنفيذ الخدمة. ولا تشمل الخدمة ضمان نتائج تجارية أو تسويقية أو مالية معينة ناتجة عن استخدام التصميم، إذ تعتمد تلك النتائج على عوامل خارج نطاق التصميم.</p>
+            <h3>7. القانون والاختصاص</h3>
+            <p>تخضع العلاقة للأنظمة المعمول بها في المملكة العربية السعودية. ويسعى الطرفان أولًا إلى حل أي خلاف وديًا عبر قنوات التواصل الموضحة قبل اللجوء إلى الجهة المختصة.</p>
+          </article>
+
+          <article id="policyPayment" class="policy-pane" role="tabpanel" aria-labelledby="policyTabPayment" data-policy-pane="payment">
+            <h2>سياسة الدفع والتحويل البنكي</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <h3>1. وسيلة الدفع المتاحة</h3>
+            <p>وسيلة الدفع المتاحة حاليًا هي التحويل البنكي المباشر إلى الحساب الموضح في صفحة الدفع. وسائل الدفع بالبطاقات غير مفعلة حاليًا وتظهر في الموقع بعبارة «قريباً»، ولا يطلب الموقع من العميل إدخال رقم بطاقة أو رمز تحقق أو بيانات مصرفية سرية.</p>
+            <h3>2. السعر النهائي</h3>
+            <p>يعرض الموقع السعر الأساسي لكل خدمة. قبل التحويل يجب على العميل مراجعة الخدمات المختارة والمبلغ الظاهر في صفحة الدفع، ويكون أي تغيير جوهري في النطاق خاضعًا لتأكيد وتسعير جديدين قبل التنفيذ.</p>
+            <h3>3. إثبات التحويل</h3>
+            <p>بعد إجراء التحويل يجب إرفاق صورة أو ملف PDF لإثبات الحوالة من خلال نموذج الدفع. لا يكتمل طلب التحقق دون اختيار المرفق المطلوب وإدخال اسم المحوّل.</p>
+            <h3>4. التحقق من العملية</h3>
+            <p>لا يعد اختيار ملف الحوالة أو إرسال طلب التحقق وحده تأكيدًا نهائيًا لاستلام المبلغ. تتم مطابقة اسم المحوّل والمبلغ والمرجع مع الحركة البنكية، ثم يتم تأكيد استلام الدفع للعميل عبر وسيلة التواصل المقدمة.</p>
+            <h3>5. التحويل الخاطئ أو المبلغ غير المطابق</h3>
+            <p>إذا تم تحويل مبلغ مختلف أو إلى حساب غير صحيح أو تكرر التحويل، يجب التواصل معنا في أقرب وقت وإرفاق مرجع العملية. تتم معالجة أي مبلغ قابل للرد وفق سياسة الاسترداد وبعد التحقق من وصوله فعليًا.</p>
+            <h3>6. الرسوم البنكية</h3>
+            <p>أي رسوم يفرضها بنك العميل أو بنك وسيط على التحويل تكون مسؤولية العميل، ويجب أن يصل المبلغ المطلوب كاملًا ما لم يتم الاتفاق كتابيًا على غير ذلك.</p>
+            <h3>7. الفواتير والإثباتات</h3>
+            <p>يتم تزويد العميل بإثبات أو فاتورة بحسب آلية الدفع والترتيبات المتفق عليها والمتطلبات النظامية المطبقة على مقدم الخدمة.</p>
+          </article>
+
+          <article id="policyScope" class="policy-pane" role="tabpanel" aria-labelledby="policyTabScope" data-policy-pane="scope">
+            <h2>النطاق والتعديلات والموافقات</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <h3>1. نطاق الخدمة</h3>
+            <p>يشمل كل سعر المخرجات المحددة في وصف الخدمة وما يتم تأكيده كتابيًا قبل البدء. أي مخرج غير مذكور لا يعد ضمن النطاق تلقائيًا.</p>
+            <h3>2. جولات التعديل</h3>
+            <p>تعني جولة التعديل مجموعة ملاحظات مجمعة يرسلها العميل دفعة واحدة على النسخة المقدمة. عدد الجولات المشمولة موضح لكل خدمة.</p>
+            <h3>3. التغيير الجوهري</h3>
+            <p>طلب اتجاه تصميمي جديد بالكامل بعد اعتماد اتجاه سابق، أو تغيير اسم العلامة أو المحتوى الأساسي أو المقاسات أو نطاق المخرجات، قد يعد نطاقًا جديدًا ويحتاج إلى تسعير ومدة إضافيين.</p>
+            <h3>4. الاعتماد</h3>
+            <p>الموافقة الكتابية على التصميم أو طلب الملفات النهائية يعد اعتمادًا للمرحلة المعروضة. وبعد الاعتماد، يعامل أي تغيير جوهري كطلب جديد ما لم يكن تصحيحًا لخطأ من مقدم الخدمة.</p>
+          </article>
+
+          <article id="policyRights" class="policy-pane" role="tabpanel" aria-labelledby="policyTabRights" data-policy-pane="rights">
+            <h2>حقوق الملكية والمواد المقدمة</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <h3>1. مواد العميل</h3>
+            <p>يقر العميل بأنه يملك أو يملك ترخيصًا صالحًا لاستخدام النصوص والصور والشعارات والخطوط والمواد التي يزود بها مقدم الخدمة، ويتحمل مسؤولية أي مطالبة ناشئة عن مواد قدمها دون حق.</p>
+            <h3>2. المخرجات النهائية</h3>
+            <p>تحدد حقوق استخدام المخرجات النهائية بحسب ما يتم الاتفاق عليه في نطاق الخدمة. ولا تنتقل حقوق ملفات أو عناصر طرف ثالث المرخصة بشروط مستقلة إلا في حدود ترخيصها.</p>
+            <h3>3. المسودات والاتجاهات غير المعتمدة</h3>
+            <p>المسودات والأفكار والاتجاهات غير المعتمدة ليست مخرجات نهائية ولا يحق استخدامها أو نشرها أو تسليمها لطرف آخر باعتبارها عملًا نهائيًا دون اتفاق.</p>
+            <h3>4. ملفات المصدر</h3>
+            <p>تسلم ملفات المصدر فقط إذا كانت مذكورة صراحة في وصف الخدمة أو الاتفاق المكتوب. وقد تتضمن بعض الملفات عناصر أو خطوطًا ذات تراخيص خاصة يجب على العميل الالتزام بها.</p>
+          </article>
+
+          <article id="policyComplaints" class="policy-pane" role="tabpanel" aria-labelledby="policyTabComplaints" data-policy-pane="complaints">
+            <h2>سياسة الشكاوى والنزاعات</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <h3>1. تقديم الشكوى</h3>
+            <p>يمكن تقديم الشكوى عبر البريد الإلكتروني INFO@A7SN.COM أو رقم التواصل 0509015300، مع ذكر اسم العميل ووسيلة التواصل والخدمة وشرح المشكلة وأي مستندات أو صور داعمة.</p>
+            <h3>2. مدة الاستجابة</h3>
+            <p>يتم تأكيد استلام الشكوى والرد الأولي عليها خلال يومي عمل. ويستهدف حل الشكاوى العادية خلال 7 أيام عمل. إذا احتاجت الحالة إلى مراجعة فنية أو مالية مع طرف ثالث فقد تمتد المعالجة إلى 14 يوم عمل مع إبقاء العميل على اطلاع.</p>
+            <h3>3. معالجة النزاع</h3>
+            <p>تراجع تفاصيل الاتفاق والمراسلات والنسخ المسلمة وسجل الدفع لتحديد الحل المناسب. وقد يشمل الحل تصحيح العمل أو استكمال جزء ناقص أو إعادة جدولة التسليم أو استردادًا جزئيًا أو كاملًا إذا انطبقت سياسة الاسترداد.</p>
+            <h3>4. النزاعات المتعلقة بالدفع</h3>
+            <p>في حال وجود اعتراض على عملية دفع، يرجى التواصل معنا أولًا لتمكين التحقق السريع وتقديم المستندات اللازمة. ولا يمنع ذلك العميل من الحقوق المتاحة له لدى البنك أو مزود الدفع وفق الأنظمة والقواعد المعمول بها.</p>
+            <h3>5. السجلات</h3>
+            <p>يحتفظ مقدم الخدمة بسجلات الطلبات والمراسلات والمعاملات اللازمة لإدارة الخدمة ومعالجة الشكاوى والنزاعات وفق المتطلبات النظامية والتشغيلية المطبقة.</p>
+          </article>
+
+          <article id="policyPrivacy" class="policy-pane" role="tabpanel" aria-labelledby="policyTabPrivacy" data-policy-pane="privacy">
+            <h2>سياسة الخصوصية</h2>
+            <p class="policy-updated">آخر تحديث: 22 سبتمبر 2026</p>
+            <h3>1. البيانات التي نجمعها</h3>
+            <p>قد نجمع الاسم ورقم الجوال والبريد الإلكتروني وتفاصيل المشروع والمواد التي يرسلها العميل، إضافة إلى بيانات المعاملة التي يتيحها مزود الدفع دون تخزين بيانات البطاقة الحساسة في هذا الموقع.</p>
+            <h3>2. أغراض الاستخدام</h3>
+            <p>تستخدم البيانات للرد على الطلب وتقديم الخدمة وإدارة المشروع وإرسال الملفات والفواتير والتواصل حول الاسترداد أو الشكاوى والوفاء بالمتطلبات النظامية ذات الصلة.</p>
+            <h3>3. مرفق الحوالة</h3>
+            <p>يتم اختيار مرفق الحوالة محليًا في متصفح العميل ثم تمريره إلى وسيلة المشاركة التي يختارها العميل إذا كان جهازه يدعم مشاركة الملفات. هذا الموقع الثابت لا يرفع المرفق تلقائيًا إلى مستودع عام ولا يخزن صور الحوالات في ملفات الموقع.</p>
+            <h3>4. مشاركة البيانات</h3>
+            <p>لا تباع البيانات الشخصية. وقد تتم مشاركة الحد الأدنى اللازم مع مزود دفع أو مزود خدمة تقني أو جهة نظامية عندما يكون ذلك مطلوبًا لتنفيذ الخدمة أو الامتثال لالتزام نظامي.</p>
+            <h3>5. الحماية والاحتفاظ</h3>
+            <p>تتخذ تدابير معقولة لحماية البيانات من الوصول غير المصرح به، وتحتفظ البيانات للمدة اللازمة لتقديم الخدمة ومعالجة النزاعات والوفاء بالالتزامات النظامية ثم تزال أو تقلل متى لم تعد هناك حاجة مشروعة لها.</p>
+            <h3>6. الاستفسارات</h3>
+            <p>للاستفسار عن البيانات أو طلب تحديثها، يمكن التواصل عبر INFO@A7SN.COM أو 0509015300.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="window app-window" id="aboutWindow" data-title="حول المتجر" data-width="460" data-height="350" hidden>
+    <section class="window app-window" id="contactWindow" data-title="التواصل" data-width="520" data-height="430" hidden>
       <div class="title-bar window-handle">
-        <div class="title-bar-text">حول متجر أحمد خليفة</div>
+        <div class="title-bar-text">خصائص جهة الاتصال</div>
+        <div class="title-bar-controls"><button aria-label="تصغير" data-action="minimize"></button><button aria-label="تكبير" data-action="maximize"></button><button aria-label="إغلاق" data-action="close"></button></div>
+      </div>
+      <div class="window-body classic-dialog">
+        <div class="contact-header"><span class="contact-avatar">أ</span><div><h2>أحمد خليفة</h2><p>مصمم جرافيك مستقل — المملكة العربية السعودية</p></div></div>
+        <fieldset>
+          <legend>معلومات الاتصال</legend>
+          <div class="contact-list">
+            <a href="tel:0509015300"><span>الهاتف:</span><strong dir="ltr">0509015300</strong></a>
+            <a href="mailto:INFO@A7SN.COM"><span>البريد الإلكتروني:</span><strong dir="ltr">INFO@A7SN.COM</strong></a>
+            <button type="button" data-open="orderWindow"><span>الطلبات:</span><strong>فتح نموذج طلب خدمة</strong></button>
+            <button type="button" data-open="policiesWindow"><span>السياسات:</span><strong>فتح مركز السياسات والشروط</strong></button>
+          </div>
+        </fieldset>
+        <p class="small-note">ساعات الرد ليست وعدًا بالتنفيذ الفوري. تتم مراجعة كل طلب وتأكيد التوفر والنطاق والمدة قبل بدء العمل.</p>
+      </div>
+    </section>
+
+    <section class="window app-window" id="serviceWindow" data-title="خصائص الخدمة" data-width="590" data-height="540" hidden>
+      <div class="title-bar window-handle">
+        <div class="title-bar-text" id="serviceWindowTitle">خصائص الخدمة</div>
+        <div class="title-bar-controls"><button aria-label="تصغير" data-action="minimize"></button><button aria-label="تكبير" data-action="maximize"></button><button aria-label="إغلاق" data-action="close"></button></div>
+      </div>
+      <div class="window-body classic-dialog">
+        <div id="serviceDetails"></div>
+        <div class="dialog-actions"><button type="button" data-action="close">إلغاء</button><button type="button" class="default" id="addFromDetails">إضافة للطلب</button></div>
+      </div>
+    </section>
+
+    <section class="window app-window" id="aboutWindow" data-title="حول خدمات التصميم" data-width="480" data-height="370" hidden>
+      <div class="title-bar window-handle">
+        <div class="title-bar-text">حول خدمات التصميم</div>
         <div class="title-bar-controls"><button aria-label="تصغير" data-action="minimize"></button><button aria-label="تكبير" data-action="maximize"></button><button aria-label="إغلاق" data-action="close"></button></div>
       </div>
       <div class="window-body about-box">
         <span class="about-logo">أ</span>
-        <h2>متجر خدمات التصميم</h2>
-        <p>خدمات تصميم جرافيك وهوية بصرية رقمية، مع أسعار وسياسات ونطاق عمل واضح.</p>
+        <h2>خدمات التصميم الجرافيكي</h2>
+        <p>موقع لعرض وطلب خدمات تصميم جرافيك رقمية يقدمها أحمد خليفة بصفته مقدم خدمة مستقل.</p>
+        <hr>
         <p><strong>الجوال:</strong> <a href="tel:0509015300" dir="ltr">0509015300</a></p>
         <p><strong>البريد:</strong> <a href="mailto:INFO@A7SN.COM" dir="ltr">INFO@A7SN.COM</a></p>
+        <button type="button" data-open="policiesWindow">عرض السياسات والشروط</button>
       </div>
     </section>
 
     <div class="start-menu" id="startMenu" hidden>
-      <div class="start-user"><span>أ</span><strong>أحمد خليفة</strong></div>
+      <div class="start-user"><span class="start-user-icon">أ</span><strong>أحمد خليفة</strong></div>
       <div class="start-columns">
         <div class="start-primary">
-          <button type="button" data-open="storeWindow"><b>أ</b><span>متجر التصميم<small>الخدمات والأسعار</small></span></button>
-          <button type="button" data-open="orderWindow"><b>+</b><span>طلب جديد<small>إرسال تفاصيل المشروع</small></span></button>
-          <button type="button" data-open="cartWindow"><b>▣</b><span>سلة الطلب<small>الخدمات المختارة</small></span></button>
+          <button type="button" data-open="storeWindow"><b class="start-ie">e</b><span>خدمات التصميم<small>Internet Explorer</small></span></button>
+          <button type="button" data-open="cartWindow"><b class="start-folder"></b><span>سلة الطلب<small>الخدمات المختارة</small></span></button>
+          <button type="button" data-open="orderWindow"><b class="start-mail">@</b><span>طلب جديد<small>إرسال تفاصيل المشروع</small></span></button>
+          <button type="button" data-open="paymentWindow"><b class="start-payment">ر.س</b><span>الدفع<small>تحويل بنكي وإثبات الحوالة</small></span></button>
         </div>
         <div class="start-secondary">
           <button type="button" data-open="policiesWindow">السياسات والشروط</button>
-          <button type="button" data-open="contactWindow">التواصل</button>
-          <button type="button" data-open="aboutWindow">حول المتجر</button>
+          <button type="button" data-policy="complaints">الشكاوى والنزاعات</button>
+          <button type="button" data-open="contactWindow">معلومات الاتصال</button>
+          <button type="button" data-open="aboutWindow">حول الموقع</button>
         </div>
       </div>
+      <div class="start-footer"><button type="button" data-open="aboutWindow">تسجيل الخروج</button><button type="button" data-open="contactWindow">إيقاف تشغيل</button></div>
     </div>
   </div>
 
   <div class="xp-taskbar" id="taskbar">
-    <button class="start-button" id="startButton" type="button"><span class="start-orb">⊞</span><span>ابدأ</span></button>
+    <button class="start-button" id="startButton" type="button"><span class="windows-mark">▰</span><span>ابدأ</span></button>
     <div class="task-buttons" id="taskButtons"></div>
-    <button class="tray" type="button" data-open="contactWindow"><span>0509015300</span><time id="clock">--:--</time></button>
+    <button class="tray" type="button" data-open="contactWindow"><span class="tray-icon">◉</span><span dir="ltr">0509015300</span><time id="clock">--:--</time></button>
   </div>
 </body>
 </html>

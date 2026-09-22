@@ -70,6 +70,8 @@
     const cartTotalEl = document.getElementById("cartTotal");
     const orderSummary = document.getElementById("orderSummary");
     const orderTotal = document.getElementById("orderTotal");
+    const paymentSummary = document.getElementById("paymentSummary");
+    const paymentTotal = document.getElementById("paymentTotal");
     const inlineCount = document.getElementById("cartCountInline");
 
     inlineCount.textContent = String(state.cart.length);
@@ -84,7 +86,7 @@
 
       const price = document.createElement("span");
       price.className = "money";
-      price.innerHTML = '<span class="currency">ر.س</span><span>' + moneyText(item.price) + "</span>";
+      price.innerHTML = '<span>' + moneyText(item.price) + '</span><span class="currency">ر.س</span>';
 
       const remove = document.createElement("button");
       remove.type = "button";
@@ -117,6 +119,29 @@
 
     cartTotalEl.textContent = moneyText(cartTotal());
     orderTotal.textContent = moneyText(cartTotal());
+
+    if (paymentSummary) {
+      paymentSummary.replaceChildren(...(
+        state.cart.length
+          ? state.cart.map((item) => {
+              const row = document.createElement("div");
+              row.className = "order-summary-row";
+              const name = document.createElement("span");
+              name.textContent = item.name;
+              const price = document.createElement("strong");
+              price.textContent = moneyText(item.price) + " ر.س";
+              row.append(name, price);
+              return row;
+            })
+          : [(() => {
+              const empty = document.createElement("div");
+              empty.className = "empty-state";
+              empty.textContent = "لم تختر أي خدمة حتى الآن.";
+              return empty;
+            })()]
+      ));
+    }
+    if (paymentTotal) paymentTotal.textContent = moneyText(cartTotal());
 
     cards.forEach((card) => {
       const selected = inCart(card.dataset.id);
@@ -203,8 +228,13 @@
     activateWindow(win);
     addTaskButton(win).classList.add("active");
 
-    if (id === "cartWindow" || id === "orderWindow") renderCart();
+    if (id === "cartWindow" || id === "orderWindow" || id === "paymentWindow") renderCart();
     if (id === "orderWindow") document.getElementById("customerName")?.focus();
+    if (id === "paymentWindow") {
+      const payerName = document.getElementById("payerName");
+      const customerName = document.getElementById("customerName")?.value.trim();
+      if (payerName && customerName && !payerName.value.trim()) payerName.value = customerName;
+    }
     startMenu.hidden = true;
   }
 
@@ -244,15 +274,21 @@
     state.currentServiceId = id;
     document.getElementById("serviceWindowTitle").textContent = card.dataset.name;
     const details = document.getElementById("serviceDetails");
-    const description = card.querySelector("p")?.textContent || "";
-    const features = [...card.querySelectorAll("li")].map((li) => "<li>" + li.textContent + "</li>").join("");
+    const description = card.querySelector(".service-title small")?.textContent || "";
+    const meta = [...card.querySelectorAll(".service-meta")].map((item) => item.textContent.trim());
+    const features = [...card.querySelectorAll(".service-hidden-details li")].map((li) => "<li>" + li.textContent + "</li>").join("");
     details.innerHTML =
       "<h2>" + card.dataset.name + "</h2>" +
       "<p>" + description + "</p>" +
+      "<fieldset><legend>معلومات التنفيذ</legend>" +
+      "<p><strong>مدة التنفيذ:</strong> " + (meta[0] || "تحدد عند تأكيد الطلب") + "</p>" +
+      "<p><strong>التعديلات:</strong> " + (meta[1] || "حسب الاتفاق") + "</p>" +
+      "</fieldset>" +
       "<fieldset><legend>يشمل</legend><ul>" + features + "</ul></fieldset>" +
-      '<p><strong>السعر:</strong> <span class="money"><span class="currency">ر.س</span><span>' +
+      '<p><strong>السعر:</strong> <span class="money"><span>' +
       moneyText(Number(card.dataset.price)) +
-      "</span></span></p>";
+      '</span><span class="currency">ر.س</span></span></p>' +
+      '<p class="small-note">السعر يخص النطاق الموضح. قبل بدء التنفيذ يتم تأكيد النطاق والمدة والمبلغ النهائي ووسيلة الدفع.</p>';
     document.getElementById("addFromDetails").textContent = inCart(id) ? "إزالة من الطلب" : "إضافة للطلب";
     openWindow("serviceWindow");
   }
@@ -349,7 +385,148 @@
     }
   }
 
+
+  function paymentText() {
+    const payerName = document.getElementById("payerName")?.value.trim() || "";
+    const transferReference = document.getElementById("transferReference")?.value.trim() || "";
+    const receipt = document.getElementById("transferReceipt")?.files?.[0];
+    const customerName = document.getElementById("customerName")?.value.trim() || "";
+    const phone = document.getElementById("customerPhone")?.value.trim() || "";
+    const email = document.getElementById("customerEmail")?.value.trim() || "";
+    const services = state.cart.map((item) => "- " + item.name + ": " + moneyText(item.price) + " ر.س").join("\n");
+    return [
+      "إثبات تحويل بنكي — خدمات التصميم",
+      "",
+      "اسم المحوّل: " + payerName,
+      "مرجع الحوالة: " + (transferReference || "غير مذكور"),
+      "المبلغ: " + moneyText(cartTotal()) + " ر.س",
+      "المرفق المحدد: " + (receipt?.name || "غير محدد"),
+      "",
+      "العميل: " + (customerName || payerName),
+      "الجوال: " + (phone || "غير مذكور"),
+      "البريد: " + (email || "غير مذكور"),
+      "",
+      "الخدمات:",
+      services || "- لا توجد خدمات",
+      "",
+      "الرجاء التحقق من وصول التحويل وتأكيد استلامه."
+    ].join("\n");
+  }
+
+  function validatePayment() {
+    const status = document.getElementById("paymentStatus");
+    const payer = document.getElementById("payerName");
+    const receipt = document.getElementById("transferReceipt");
+    const confirm = document.getElementById("paymentConfirm");
+    [payer, receipt, confirm].forEach((input) => input?.removeAttribute("aria-invalid"));
+
+    if (!state.cart.length) {
+      status.textContent = "أضف خدمة واحدة على الأقل قبل الانتقال للدفع.";
+      openWindow("storeWindow");
+      document.getElementById("servicesPanel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return false;
+    }
+    if (!payer?.value.trim()) {
+      status.textContent = "اكتب اسم المحوّل.";
+      payer?.setAttribute("aria-invalid", "true");
+      payer?.focus();
+      return false;
+    }
+
+    const file = receipt?.files?.[0];
+    if (!file) {
+      status.textContent = "مرفق الحوالة مطلوب للمتابعة.";
+      receipt?.setAttribute("aria-invalid", "true");
+      receipt?.focus();
+      return false;
+    }
+
+    const allowed = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
+    if (!allowed.includes(file.type)) {
+      status.textContent = "صيغة المرفق غير مدعومة. استخدم صورة JPG أو PNG أو WEBP أو ملف PDF.";
+      receipt?.setAttribute("aria-invalid", "true");
+      return false;
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      status.textContent = "حجم المرفق أكبر من 10 ميجابايت.";
+      receipt?.setAttribute("aria-invalid", "true");
+      return false;
+    }
+    if (!confirm?.checked) {
+      status.textContent = "أكد صحة بيانات التحويل والمرفق أولًا.";
+      confirm?.setAttribute("aria-invalid", "true");
+      confirm?.focus();
+      return false;
+    }
+
+    status.textContent = "";
+    return true;
+  }
+
+  async function copyValue(value, statusText = "تم النسخ.") {
+    try {
+      await navigator.clipboard.writeText(value);
+      const status = document.getElementById("paymentStatus");
+      if (status) status.textContent = statusText;
+    } catch (_) {
+      const status = document.getElementById("paymentStatus");
+      if (status) status.textContent = "تعذر النسخ التلقائي من هذا المتصفح.";
+    }
+  }
+
+  async function submitPaymentProof() {
+    if (!validatePayment()) return;
+    const status = document.getElementById("paymentStatus");
+    const file = document.getElementById("transferReceipt").files[0];
+    const text = paymentText();
+
+    try {
+      if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          title: "إثبات تحويل بنكي",
+          text,
+          files: [file]
+        });
+        status.textContent = "تم فتح نافذة المشاركة بالمرفق. اختر وسيلة الإرسال المناسبة لإتمام طلب التحقق.";
+        return;
+      }
+    } catch (error) {
+      if (error?.name === "AbortError") {
+        status.textContent = "تم إلغاء المشاركة. المرفق ما زال محددًا ويمكنك المحاولة مرة أخرى.";
+        return;
+      }
+    }
+
+    try { await navigator.clipboard.writeText(text); } catch (_) {}
+    window.open("https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(text), "_blank", "noopener");
+    status.textContent = "تم فتح واتساب. هذا المتصفح لا يتيح إرفاق الملف تلقائيًا؛ أرفق نفس ملف الحوالة المحدد قبل إرسال الرسالة.";
+  }
+
+  function updateReceiptPreview() {
+    const input = document.getElementById("transferReceipt");
+    const preview = document.getElementById("receiptPreview");
+    const status = document.getElementById("paymentStatus");
+    input?.removeAttribute("aria-invalid");
+    if (status) status.textContent = "";
+    const file = input?.files?.[0];
+    if (!preview) return;
+    if (!file) {
+      preview.hidden = true;
+      preview.textContent = "";
+      return;
+    }
+    const sizeMb = (file.size / (1024 * 1024)).toFixed(file.size > 1024 * 1024 ? 1 : 2);
+    preview.hidden = false;
+    preview.textContent = file.name + " — " + sizeMb + " MB";
+  }
+
   document.addEventListener("click", (event) => {
+    const copyBank = event.target.closest("[data-copy-bank]");
+    if (copyBank) {
+      copyValue(copyBank.dataset.copyBank, "تم نسخ البيانات.");
+      return;
+    }
+
     const open = event.target.closest("[data-open]");
     if (open) {
       openWindow(open.dataset.open);
@@ -442,6 +619,37 @@
 
   document.getElementById("emailOrder").addEventListener("click", sendEmail);
   document.getElementById("copyOrder").addEventListener("click", copyOrder);
+  document.getElementById("continueToPayment").addEventListener("click", () => {
+    if (!validateOrder()) return;
+    openWindow("paymentWindow");
+  });
+  document.getElementById("copyPaymentDetails").addEventListener("click", () => {
+    copyValue(
+      [
+        "البنك الأهلي السعودي",
+        "AHMAD KAMAL A KHALIFA",
+        "IBAN: SA2210000032800000066706",
+        "Account: 32800000066706",
+        "SWIFT: NCBKSAJE"
+      ].join("\n"),
+      "تم نسخ بيانات التحويل."
+    );
+  });
+  document.getElementById("paymentProofForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitPaymentProof();
+  });
+  document.getElementById("transferReceipt").addEventListener("change", updateReceiptPreview);
+  document.querySelectorAll("#payerName, #transferReference, #paymentConfirm").forEach((input) => {
+    input.addEventListener("input", () => {
+      input.removeAttribute("aria-invalid");
+      document.getElementById("paymentStatus").textContent = "";
+    });
+    input.addEventListener("change", () => {
+      input.removeAttribute("aria-invalid");
+      document.getElementById("paymentStatus").textContent = "";
+    });
+  });
 
   startButton.addEventListener("click", () => {
     startMenu.hidden = !startMenu.hidden;
